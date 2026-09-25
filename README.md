@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Aquí y Ahora — Proseminario de la Comunidad de Cristianos
+### Movimiento para la Renovación Religiosa (Rama Antroposófica)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Plataforma integradora de estudio, comunión fraternal y discernimiento vocacional para los participantes del Proseminario.
 
-Currently, two official plugins are available:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/RamiStein/sistema-aqui-y-ahora)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🕊️ Propósito de la Plataforma
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Unificar y simplificar toda la vida del proseminario en un entorno cálido, contemplativo y funcional:
+1. **Inicio («Aquí y Ahora»):** Guía formativa general, lema del tiempo litúrgico y accesos rápidos.
+2. **Sacarse las Dudas:** Foro de consultas teológicas y vocacionales con respuestas validadas por sacerdotes tutores.
+3. **Cartelera Comunitaria:** Avisos fraternos sobre viajes compartidos para intensivos, alojamiento, pedidos de oración y proyectos.
+4. **Bibliografía Esencial:** Obras de Rudolf Steiner, Friedrich Rittelmeyer y Emil Bock con citas para meditar y seguimiento de lectura.
+5. **Resúmenes de Estudio:** Apuntes colaborativos, síntesis de conferencias y mapas conceptuales compartidos por estudiantes.
+6. **Salas de Conversación (Jitsi Live):** Videollamadas integradas en vivo con cuaderno de apuntes y chat en tiempo real.
+7. **Noticias de Sacerdotes:** Cartas pastorales, orientaciones y reflexiones estacionales.
+8. **Calendario y Módulos:** Estructura de los 4 módulos anuales y el ritmo del año sagrado.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## 🚀 Despliegue en Vercel
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+Haz clic en el siguiente enlace para desplegar la web en tu cuenta de Vercel con un solo clic:
+👉 **[Desplegar en Vercel](https://vercel.com/new/clone?repository-url=https://github.com/RamiStein/sistema-aqui-y-ahora)**
+
+### Desarrollo Local
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Compilar para producción
+npm run build
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
