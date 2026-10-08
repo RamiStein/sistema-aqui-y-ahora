@@ -10,6 +10,7 @@ import {
   ArrowRight, 
   ShieldCheck, 
   Calendar, 
+  CalendarDays,
   Play, 
   HelpCircle,
   Users
@@ -25,6 +26,7 @@ export const OverviewModule: React.FC = () => {
     immersionTrip,
     availableUsers,
     attendanceSessions,
+    classes,
     joinMeeting 
   } = useApp();
 
@@ -79,6 +81,14 @@ export const OverviewModule: React.FC = () => {
             >
               <Play className="w-4 h-4 text-amber-200" />
               <span>Video y Fondo Solidario</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('calendario_clases')}
+              className="px-4 py-2.5 bg-amber-800/80 hover:bg-amber-800 text-stone-100 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center space-x-2 shadow-xs"
+            >
+              <CalendarDays className="w-4 h-4 text-amber-300" />
+              <span>Calendario de Clases ({classes.length})</span>
             </button>
 
             <button
@@ -175,8 +185,8 @@ export const OverviewModule: React.FC = () => {
         </div>
       </div>
 
-      {/* 4 Clean Quick Access Modules */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      {/* 5 Clean Quick Access Modules */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
         <div
           onClick={() => setActiveTab('inmersion')}
           className="p-4 bg-white rounded-2xl border border-stone-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group"
@@ -200,6 +210,19 @@ export const OverviewModule: React.FC = () => {
           <h4 className="font-bold text-stone-800 text-sm font-serif">Fondo & Video</h4>
           <p className="text-[11px] text-stone-500 mt-0.5 line-clamp-2">
             Por qué se necesita el dinero y cómo aportar.
+          </p>
+        </div>
+
+        <div
+          onClick={() => setActiveTab('calendario_clases')}
+          className="p-4 bg-white rounded-2xl border border-stone-200 hover:border-amber-500 hover:shadow-md cursor-pointer transition-all group"
+        >
+          <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+            <CalendarDays className="w-5 h-5" />
+          </div>
+          <h4 className="font-bold text-stone-800 text-sm font-serif">Calendario Clases</h4>
+          <p className="text-[11px] text-stone-500 mt-0.5 line-clamp-2">
+            Pasadas y porvenir con sacerdotes y temarios ({classes.length}).
           </p>
         </div>
 

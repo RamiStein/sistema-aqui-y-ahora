@@ -11,7 +11,8 @@ import {
   AttendanceSession,
   AttendanceStatus,
   FundraiserCampaign,
-  ImmersionTrip
+  ImmersionTrip,
+  ProseminarClass
 } from '../types';
 import { StorageService } from '../services/storage';
 import { CURRENT_LITURGICAL_INFO, SEED_USERS } from '../data/seedData';
@@ -20,6 +21,7 @@ export type ActiveTab =
   | 'inicio' 
   | 'inmersion' 
   | 'recaudacion' 
+  | 'calendario_clases'
   | 'asistencia' 
   | 'estudio' 
   | 'salas_cartelera'
@@ -35,6 +37,10 @@ interface AppContextType {
   
   // Immersion Trip
   immersionTrip: ImmersionTrip;
+
+  // Classes Calendar
+  classes: ProseminarClass[];
+  addClass: (cls: Omit<ProseminarClass, 'id'>) => void;
 
   // Attendance
   attendanceSessions: AttendanceSession[];
@@ -107,6 +113,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [attendanceSessions, setAttendanceSessions] = useState<AttendanceSession[]>([]);
   const [fundraiser, setFundraiser] = useState<FundraiserCampaign>(StorageService.getFundraiser());
   const [immersionTrip, setImmersionTrip] = useState<ImmersionTrip>(StorageService.getTrip());
+  const [classes, setClasses] = useState<ProseminarClass[]>([]);
 
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -124,6 +131,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAttendanceSessions(StorageService.getAttendanceSessions());
     setFundraiser(StorageService.getFundraiser());
     setImmersionTrip(StorageService.getTrip());
+    setClasses(StorageService.getClasses());
   }, []);
 
   const showToast = (msg: string) => {
@@ -169,6 +177,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     });
     setFundraiser(updated);
     showToast('¡Aporte registrado! Muchas gracias por el apoyo al viaje');
+  };
+
+  // Classes Calendar action
+  const addClass = (clsData: Omit<ProseminarClass, 'id'>) => {
+    const newCls: ProseminarClass = {
+      ...clsData,
+      id: `class_${Date.now()}`
+    };
+    const updated = StorageService.addClass(newCls);
+    setClasses(updated);
+    showToast('Nueva clase agregada al calendario');
   };
 
   const likeArticle = (id: string) => {
@@ -301,6 +320,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         availableUsers: SEED_USERS,
         liturgicalInfo,
         immersionTrip,
+        classes,
+        addClass,
         attendanceSessions,
         updateAttendance,
         addAttendanceSession,

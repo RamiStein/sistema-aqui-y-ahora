@@ -219,3 +219,22 @@ export interface ImmersionTrip {
   coordinatorName: string;
   coordinatorContact: string;
 }
+
+// 4. Calendario de Clases (Pasadas y Porvenir)
+export interface ProseminarClass {
+  id: string;
+  title: string;
+  moduleNumber: number;
+  moduleTitle: string; // e.g. "Módulo 2: Los Cuatro Evangelios"
+  date: string; // YYYY-MM-DD
+  time: string; // HH:mm
+  durationMinutes: number;
+  assignedPriest: UserProfile; // Sacerdote a cargo
+  status: 'pasada' | 'proxima' | 'en_curso';
+  syllabus: string[]; // Temario estructurado
+  requiredReading?: string; // Lecturas previas requeridas
+  modality: 'virtual' | 'presencial' | 'hibrido';
+  locationOrLink?: string;
+  recordingUrl?: string; // Para clases pasadas
+  summaryNote?: string; // Síntesis o apuntes
+}

@@ -8,6 +8,7 @@ import { OverviewModule } from './components/modules/OverviewModule';
 import { TripModule } from './components/modules/TripModule';
 import { FundraiserModule } from './components/modules/FundraiserModule';
 import { AttendanceModule } from './components/modules/AttendanceModule';
+import { ClassesCalendarModule } from './components/modules/ClassesCalendarModule';
 import { StudyModule } from './components/modules/StudyModule';
 import { CommunityRoomsModule } from './components/modules/CommunityRoomsModule';
 import { NewsModule } from './components/modules/NewsModule';
@@ -69,6 +70,7 @@ const MainLayout: React.FC = () => {
             {activeTab === 'inmersion' && <TripModule />}
             {activeTab === 'recaudacion' && <FundraiserModule />}
             {activeTab === 'asistencia' && <AttendanceModule />}
+            {activeTab === 'calendario_clases' && <ClassesCalendarModule />}
             {activeTab === 'estudio' && <StudyModule />}
             {activeTab === 'salas_cartelera' && <CommunityRoomsModule />}
             {activeTab === 'noticias' && <NewsModule />}

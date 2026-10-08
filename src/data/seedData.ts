@@ -10,7 +10,8 @@ import {
   ProseminarModuleInfo,
   AttendanceSession,
   FundraiserCampaign,
-  ImmersionTrip
+  ImmersionTrip,
+  ProseminarClass
 } from '../types';
 
 export const CURRENT_LITURGICAL_INFO: LiturgicalInfo = {
@@ -795,3 +796,152 @@ export const SEED_IMMERSION_TRIP: ImmersionTrip = {
   coordinatorName: 'Matías Rinaldi (Coordinador Logístico)',
   coordinatorContact: '+54 341 498-7712 • matias.rinaldi@proseminario.org'
 };
+
+export const SEED_CLASSES: ProseminarClass[] = [
+  // --- CLASES PASADAS ---
+  {
+    id: 'class_1',
+    title: 'Fundamentos de la Cristología: El Ser Humano Cuatripartito y el Gólgota',
+    moduleNumber: 1,
+    moduleTitle: 'Módulo 1: Fundamentos Teológicos',
+    date: '2026-09-20',
+    time: '10:00',
+    durationMinutes: 90,
+    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    status: 'pasada',
+    syllabus: [
+      'La constitución cuatripartita: cuerpo físico, cuerpo etérico, cuerpo astral y la chispa del Yo espiritual.',
+      'El tránsito evolutivo de la antigua conciencia crepuscular al Yo despierto moderno.',
+      'El Acontecimiento del Gólgota no como sacrificio expiatorio penal, sino como hecho cósmico y don vital para la Tierra.',
+      'Resonancia del impulso de Rudolf Steiner y Friedrich Rittelmeyer en 1922.'
+    ],
+    requiredReading: 'GA 112 - El Evangelio de San Juan (Conferencias 1 y 2)',
+    modality: 'virtual',
+    locationOrLink: 'Sala Jitsi Integrada de Video',
+    summaryNote: 'Se abordó con profundidad la diferencia entre "Bios" (vida transitoria) y "Zoe" (Vida eterna del Logos). Gran participación en las preguntas.'
+  },
+  {
+    id: 'class_2',
+    title: 'Los Cuatro Evangelios y sus Cuatro Rostros Querubínicos',
+    moduleNumber: 2,
+    moduleTitle: 'Módulo 2: Los Cuatro Evangelios',
+    date: '2026-09-27',
+    time: '10:00',
+    durationMinutes: 90,
+    assignedPriest: SEED_USERS[1], // Pbra. Helena Von Berg
+    status: 'pasada',
+    syllabus: [
+      'Las cuatro imágenes del cosmos: Mateo (Hombre), Marcos (León), Lucas (Toro/Becerro) y Juan (Águila).',
+      'Por qué los cuatro evangelios no se contradicen, sino que contemplan la grandeza inagotable del Cristo desde cuatro cuadrantes espirituales.',
+      'La corriente de sabiduría (Mateo) y la corriente de compasión infinita y curación (Lucas).',
+      'Introducción al Prólogo del Evangelio de Juan.'
+    ],
+    requiredReading: 'Emil Bock - Las Tres Corrientes de la Cristología (Capítulo 2 y 3)',
+    modality: 'virtual',
+    locationOrLink: 'Sala Jitsi Integrada de Video',
+    summaryNote: 'Taller vivencial con ejercicios de respiración sobre las imágenes sagradas. Se asignó la meditación sobre Lucas 2.'
+  },
+  {
+    id: 'class_3',
+    title: 'El Acto de Consagración del Hombre: Anatomía del Servicio Sacramental',
+    moduleNumber: 3,
+    moduleTitle: 'Módulo 3: Vida Sacramental',
+    date: '2026-10-04',
+    time: '10:30',
+    durationMinutes: 105,
+    assignedPriest: SEED_USERS[2], // Pbro. Martín Vignale
+    status: 'pasada',
+    syllabus: [
+      'Las cuatro respiraciones del altar: Proclama del Evangelio, Ofertorio, Transubstanciación y Comunión.',
+      'El rol del sacerdote como servidor del umbral y la comunidad como cuerpo litúrgico activo.',
+      'Sustancias del sacramento: el trigo y la vid como metamorfosis de las fuerzas cósmicas solares.',
+      'Silencio y devoción: la campana y la elevación de las sustancias.'
+    ],
+    requiredReading: 'Friedrich Rittelmeyer - El Acto de Consagración del Hombre (Págs. 45 a 88)',
+    modality: 'hibrido',
+    locationOrLink: 'Sede Comunidad Buenos Aires & Sala Virtual',
+    summaryNote: 'Explicación detallada de los ornamentos sacerdotales y los colores de la estola para el tiempo litúrgico actual.'
+  },
+
+  // --- CLASES PORVENIR / PRÓXIMAS ---
+  {
+    id: 'class_4',
+    title: 'El Quinto Evangelio: Los Años de Preparación de Jesús de Nazaret',
+    moduleNumber: 2,
+    moduleTitle: 'Módulo 2: Los Cuatro Evangelios',
+    date: '2026-10-18',
+    time: '10:00',
+    durationMinutes: 90,
+    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    status: 'proxima',
+    syllabus: [
+      'Las vivencias íntimas de Jesús de Nazaret entre los 12 y los 30 años según las investigaciones de Rudolf Steiner.',
+      'El encuentro doloroso con la decadencia de los misterios antiguos paganos y la sabiduría esenia.',
+      'La soledad insondable del alma de Jesús al percibir el sufrimiento de la humanidad.',
+      'El Bautismo en el Jordán como ingreso del Cristo cósmico en el triple envoltorio humano preparado.'
+    ],
+    requiredReading: 'GA 148 - El Quinto Evangelio (Conferencias 1 a 3)',
+    modality: 'virtual',
+    locationOrLink: 'Sala Jitsi Integrada de Video'
+  },
+  {
+    id: 'class_5',
+    title: 'Práctica del Habla Sacramental y las Fuerzas Cósmicas de las Consonantes',
+    moduleNumber: 4,
+    moduleTitle: 'Módulo 4: Autoeducación y Oratoria',
+    date: '2026-10-25',
+    time: '10:00',
+    durationMinutes: 100,
+    assignedPriest: SEED_USERS[1], // Pbra. Helena Von Berg
+    status: 'proxima',
+    syllabus: [
+      'El Verbo creador en la laringe humana: cómo el sonido transforma la atmósfera etérica de una sala.',
+      'Las consonantes zodiacales y las vocales planetarias según la ciencia del habla antroposófica.',
+      'Dicción cúltica vs. declamación teatral: la humildad y la claridad del instrumento vocal.',
+      'Práctica grupal de lectura de oraciones del Acto de Consagración del Hombre.'
+    ],
+    requiredReading: 'Rudolf Steiner - El Arte del Habla y el Arte Dramático (Conferencias 1 y 2)',
+    modality: 'virtual',
+    locationOrLink: 'Sala Jitsi Integrada de Video'
+  },
+  {
+    id: 'class_6',
+    title: 'La Respiración del Año Litúrgico: Del Fuego de Micael al Silencio de Adviento',
+    moduleNumber: 3,
+    moduleTitle: 'Módulo 3: Vida Sacramental y Ritmo Anual',
+    date: '2026-11-08',
+    time: '10:30',
+    durationMinutes: 90,
+    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    status: 'proxima',
+    syllabus: [
+      'Metamorfosis estacional del alma: el coraje micaélico que se repliega en la profundidad invernal/estival.',
+      'Las cuatro semanas de Adviento: los cuatro reinos de la naturaleza (mineral, vegetal, animal, humano).',
+      'El color azul y violeta en el altar: la espera de la Luz increada.',
+      'Cómo organizar el altar doméstico y la corona de adviento comunitaria.'
+    ],
+    requiredReading: 'Emil Bock - El Círculo del Año como Camino de Iniciación (Cap. Adviento)',
+    modality: 'virtual',
+    locationOrLink: 'Sala Jitsi Integrada de Video'
+  },
+  {
+    id: 'class_7',
+    title: 'Preparación Espiritual y Teológica para la Inmersión en Granja Épicos',
+    moduleNumber: 4,
+    moduleTitle: 'Módulo 4: Convivencia y Práctica de Campo',
+    date: '2026-11-22',
+    time: '10:00',
+    durationMinutes: 120,
+    assignedPriest: SEED_USERS[2], // Pbro. Martín Vignale
+    status: 'proxima',
+    syllabus: [
+      'Agricultura biodinámica y sacramento: la consagración del trabajo con la tierra en Granja Épicos.',
+      'El ritmo de los 11 días en Exaltación de la Cruz (1 al 11 de Enero): sentido de las vigilias y el oficio cotidiano.',
+      'Coloquios individuales de discernimiento sacerdotal: qué esperar del encuentro personal con los sacerdotes.',
+      'Organización de turnos de cocina, cuidado de capilla y labores comunitarias.'
+    ],
+    requiredReading: 'Cuaderno Guía de Inmersión Granja Épicos 2027',
+    modality: 'hibrido',
+    locationOrLink: 'Sede Central & Sala Virtual'
+  }
+];

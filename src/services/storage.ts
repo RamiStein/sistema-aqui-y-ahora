@@ -10,7 +10,8 @@ import {
   FundraiserCampaign,
   ImmersionTrip,
   AttendanceStatus,
-  ContributionDonation
+  ContributionDonation,
+  ProseminarClass
 } from '../types';
 import { 
   SEED_PRIEST_ARTICLES, 
@@ -22,7 +23,8 @@ import {
   SEED_USERS,
   SEED_ATTENDANCE_SESSIONS,
   SEED_FUNDRAISER,
-  SEED_IMMERSION_TRIP
+  SEED_IMMERSION_TRIP,
+  SEED_CLASSES
 } from '../data/seedData';
 
 const KEYS = {
@@ -36,6 +38,7 @@ const KEYS = {
   ATTENDANCE: 'proseminario_attendance_v1',
   FUNDRAISER: 'proseminario_fundraiser_v1',
   TRIP: 'proseminario_trip_v1',
+  CLASSES: 'proseminario_classes_v1',
 };
 
 function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -240,6 +243,19 @@ export const StorageService = {
     setToStorage(KEYS.TRIP, trip);
   },
 
+  // Classes Calendar (Past and upcoming)
+  getClasses(): ProseminarClass[] {
+    return getFromStorage(KEYS.CLASSES, SEED_CLASSES);
+  },
+  saveClasses(classes: ProseminarClass[]) {
+    setToStorage(KEYS.CLASSES, classes);
+  },
+  addClass(cls: ProseminarClass): ProseminarClass[] {
+    const classes = [cls, ...this.getClasses()];
+    this.saveClasses(classes);
+    return classes;
+  },
+
   // Active User Profile
   getActiveUser(): UserProfile {
     return getFromStorage(KEYS.ACTIVE_USER, SEED_USERS[3]); // Default to Ramiro
@@ -260,5 +276,6 @@ export const StorageService = {
     localStorage.removeItem(KEYS.ATTENDANCE);
     localStorage.removeItem(KEYS.FUNDRAISER);
     localStorage.removeItem(KEYS.TRIP);
+    localStorage.removeItem(KEYS.CLASSES);
   }
 };

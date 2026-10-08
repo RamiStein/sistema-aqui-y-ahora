@@ -9,7 +9,8 @@ import {
   Video, 
   Newspaper,
   Sparkles,
-  Calendar
+  Calendar,
+  CalendarDays
 } from 'lucide-react';
 
 interface SidebarNavProps {
@@ -23,7 +24,8 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
     fundraiser, 
     availableUsers,
     attendanceSessions,
-    articles
+    articles,
+    classes
   } = useApp();
 
   const percentage = Math.round((fundraiser.currentAmount / fundraiser.goalAmount) * 100);
@@ -60,6 +62,13 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
       icon: UserCheck, 
       badge: `${availableUsers.length}`,
       badgeColor: 'bg-stone-100 text-stone-700 border-stone-200'
+    },
+    { 
+      id: 'calendario_clases', 
+      label: 'Calendario de Clases', 
+      icon: CalendarDays, 
+      badge: `${classes.length} clases`,
+      badgeColor: 'bg-amber-100 text-amber-900 border-amber-300 font-bold'
     },
     { 
       id: 'estudio', 
