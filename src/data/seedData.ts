@@ -7,7 +7,10 @@ import {
   BookResource, 
   StudySummary, 
   MeetingRoom,
-  ProseminarModuleInfo
+  ProseminarModuleInfo,
+  AttendanceSession,
+  FundraiserCampaign,
+  ImmersionTrip
 } from '../types';
 
 export const CURRENT_LITURGICAL_INFO: LiturgicalInfo = {
@@ -23,23 +26,17 @@ export const CURRENT_LITURGICAL_INFO: LiturgicalInfo = {
 };
 
 export const SEED_USERS: UserProfile[] = [
-  {
-    id: 'user_ramiro',
-    name: 'Ramiro (Tú)',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026',
-    bio: 'Participante activo del proseminario. Profundizando en la cristología y el Acto de Consagración.'
-  },
+  // Sacerdotes
   {
     id: 'user_priest_esteban',
     name: 'Pbro. Esteban Morales',
     role: 'sacerdote',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     locality: 'Comunidad de Buenos Aires',
-    generation: 'Sacerdote Acompañante',
-    bio: 'Sacerdote de la Comunidad de Cristianos. Tutor de lecturas evangélicas y vida litúrgica.'
+    generation: 'Sacerdote Tutor',
+    bio: 'Sacerdote de la Comunidad de Cristianos. Guía litúrgico y acompañante espiritual del Proseminario.',
+    email: 'esteban.morales@comunidaddecristianos.org',
+    phone: '+54 11 4782-1190'
   },
   {
     id: 'user_priest_helena',
@@ -48,7 +45,32 @@ export const SEED_USERS: UserProfile[] = [
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
     locality: 'Comunidad de Córdoba / Santiago',
     generation: 'Tutora Proseminario',
-    bio: 'Sacerdotisa y formadora. Guía en el estudio de los evangelios y práctica meditativa.'
+    bio: 'Sacerdotisa y formadora. Guía en el estudio bíblico, euritmia y práctica meditativa.',
+    email: 'helena.vonberg@comunidaddecristianos.org',
+    phone: '+54 351 554-3211'
+  },
+  {
+    id: 'user_priest_martin',
+    name: 'Pbro. Martín Vignale',
+    role: 'sacerdote',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    locality: 'Comunidad de Buenos Aires',
+    generation: 'Sacerdote Asesor',
+    bio: 'Sacerdote de la comunidad, consejero en el proceso de discernimiento vocacional.',
+    email: 'martin.vignale@comunidaddecristianos.org',
+    phone: '+54 11 4552-8871'
+  },
+  // Integrantes del Proseminario
+  {
+    id: 'user_ramiro',
+    name: 'Ramiro (Tú)',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante activo del proseminario. Profundizando en la cristología y el Acto de Consagración.',
+    email: 'ramiro@proseminario.org',
+    phone: '+54 11 6234-9988'
   },
   {
     id: 'user_clara',
@@ -56,17 +78,65 @@ export const SEED_USERS: UserProfile[] = [
     role: 'estudiante',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
     locality: 'Montevideo, Uruguay',
-    generation: 'Proseminario 2026',
-    bio: 'Estudiante de euritmia y participante del ciclo preparatorio del seminario.'
+    generation: 'Proseminario 2026/2027',
+    bio: 'Estudiante de euritmia y participante del ciclo preparatorio del seminario sacerdotal.',
+    email: 'clara.m@proseminario.org',
+    phone: '+598 99 123 456'
   },
   {
     id: 'user_matias',
     name: 'Matías Rinaldi',
     role: 'coordinador',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
     locality: 'Rosario, Argentina',
-    generation: 'Coordinación Proseminario',
-    bio: 'Organizador de los encuentros virtuales y la logística de los intensivos presenciales.'
+    generation: 'Coordinación Logística',
+    bio: 'Coordinador de los encuentros y responsable del viaje de inmersión en Granja Épicos.',
+    email: 'matias.rinaldi@proseminario.org',
+    phone: '+54 341 498-7712'
+  },
+  {
+    id: 'user_sofia',
+    name: 'Sofía Alvarado',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+    locality: 'Mendoza, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Pedagoga Waldorf e interesada en la renovación religiosa y la pastoral sacramental.',
+    email: 'sofia.alvarado@proseminario.org',
+    phone: '+54 261 411-2390'
+  },
+  {
+    id: 'user_tomas',
+    name: 'Tomás Benítez',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+    locality: 'Córdoba Capital, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Estudiante de filosofía y participante del grupo de estudio del Evangelio de Juan.',
+    email: 'tomas.benitez@proseminario.org',
+    phone: '+54 351 688-4410'
+  },
+  {
+    id: 'user_lucia',
+    name: 'Lucía Rossi',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=200&q=80',
+    locality: 'Bariloche, Río Negro',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Terapeuta artística y participante de los encuentros patagónicos de la comunidad.',
+    email: 'lucia.rossi@proseminario.org',
+    phone: '+54 294 455-8912'
+  },
+  {
+    id: 'user_ignacio',
+    name: 'Ignacio Fontana',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
+    locality: 'La Plata, Buenos Aires',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Agrónomo orientado a la agricultura biodinámica y estudiante del proseminario.',
+    email: 'ignacio.fontana@proseminario.org',
+    phone: '+54 221 533-0091'
   }
 ];
 
@@ -535,3 +605,193 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
     assignedPriest: 'Equipo de Sacerdotes y Tutores'
   }
 ];
+
+export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
+  {
+    id: 'att_1',
+    date: '2026-09-20',
+    title: 'Apertura: Fundamentos de la Cristología y el Nuevo Impulso Sacramental',
+    type: 'clase',
+    records: [
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_clara', status: 'presente' },
+      { userId: 'user_matias', status: 'presente' },
+      { userId: 'user_sofia', status: 'presente' },
+      { userId: 'user_tomas', status: 'presente' },
+      { userId: 'user_lucia', status: 'presente' },
+      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'justificado', note: 'Servicio sacramental' }
+    ]
+  },
+  {
+    id: 'att_2',
+    date: '2026-09-27',
+    title: 'Estudio de los Cuatro Evangelios y el Prólogo de San Juan',
+    type: 'circulo',
+    records: [
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_clara', status: 'presente' },
+      { userId: 'user_matias', status: 'presente' },
+      { userId: 'user_sofia', status: 'justificado', note: 'Compromiso laboral' },
+      { userId: 'user_tomas', status: 'presente' },
+      { userId: 'user_lucia', status: 'ausente' },
+      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'presente' }
+    ]
+  },
+  {
+    id: 'att_3',
+    date: '2026-10-04',
+    title: 'Práctica Cúltica y Estudio del Acto de Consagración del Hombre',
+    type: 'taller',
+    records: [
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_clara', status: 'presente' },
+      { userId: 'user_matias', status: 'presente' },
+      { userId: 'user_sofia', status: 'presente' },
+      { userId: 'user_tomas', status: 'justificado', note: 'Viaje desde Córdoba' },
+      { userId: 'user_lucia', status: 'presente' },
+      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'justificado' }
+    ]
+  },
+  {
+    id: 'att_4',
+    date: '2026-10-07',
+    title: 'Encuentro Preparatorio: Convivencia y Logística en Granja Épicos',
+    type: 'encuentro',
+    records: [
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_clara', status: 'presente' },
+      { userId: 'user_matias', status: 'presente' },
+      { userId: 'user_sofia', status: 'presente' },
+      { userId: 'user_tomas', status: 'presente' },
+      { userId: 'user_lucia', status: 'presente' },
+      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'presente' }
+    ]
+  }
+];
+
+export const SEED_FUNDRAISER: FundraiserCampaign = {
+  title: 'Campaña Solidaria: Viaje de Inmersión Proseminario 2027',
+  subtitle: 'Fondo comunitario para cubrir hospedaje, alimentación biodinámica y becas de viaje para todos los integrantes.',
+  goalAmount: 3200000,
+  currentAmount: 1890000,
+  currency: 'ARS',
+  videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0', // Video embed / player
+  videoThumbnail: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80',
+  videoTitle: '¿Para qué necesitamos este dinero? La voz de los sacerdotes y estudiantes',
+  videoDescription: 'En este video de 3 minutos, los sacerdotes tutores y los integrantes del Proseminario comparten el sentido profundo del retiro de 11 días en la Granja Épicos y por qué la solidaridad comunitaria hace posible que nadie quede afuera por motivos económicos.',
+  aliasCbu: 'proseminario.epicos',
+  cbuNumber: '0000003100045892147852',
+  titular: 'Asociación Civil Comunidad de Cristianos',
+  banco: 'Banco Credicoop Cooperativo',
+  mercadoPagoLink: 'https://link.mercadopago.com.ar/proseminarioepicos',
+  breakdown: [
+    {
+      label: 'Hospedaje y Alimentación en Granja Épicos (11 días)',
+      amount: 1750000,
+      description: 'Alojamiento para 12 integrantes y sacerdotes, más cuatro comidas diarias elaboradas con ingredientes biodinámicos de la propia granja.'
+    },
+    {
+      label: 'Fondo de Becas de Pasajes para Estudiantes del Interior',
+      amount: 950000,
+      description: 'Aporte solidario para traslados terrestres desde Mendoza, Bariloche, Córdoba y Montevideo (Uruguay).'
+    },
+    {
+      label: 'Materiales Pedagógicos, Textos y Capilla Portátil',
+      amount: 500000,
+      description: 'Cuadernos de estudio, velas de cera de abejas, vestiduras para el Acto de Consagración y elementos de trabajo en la tierra.'
+    }
+  ],
+  contributions: [
+    {
+      id: 'don_1',
+      donorName: 'Comunidad de Cristianos de Buenos Aires (Fondo Pastoral)',
+      amount: 600000,
+      date: '2026-09-18',
+      message: 'Bendiciones para este impulso formador en la tierra fértil de Exaltación.'
+    },
+    {
+      id: 'don_2',
+      donorName: 'Familia Stein',
+      amount: 350000,
+      date: '2026-09-24',
+      message: 'Con profunda alegría apoyando el camino de los futuros servidores de la comunidad.'
+    },
+    {
+      id: 'don_3',
+      donorName: 'Círculo de Amigos de Córdoba',
+      amount: 280000,
+      date: '2026-09-29',
+      message: 'Para que todos los jóvenes del interior puedan viajar.'
+    },
+    {
+      id: 'don_4',
+      donorName: 'Donante Anónimo',
+      amount: 450000,
+      date: '2026-10-02',
+      message: 'En gratitud por los sacramentos renovados.',
+      isAnonymous: true
+    },
+    {
+      id: 'don_5',
+      donorName: 'Grupo de Euritmia Montevideo',
+      amount: 210000,
+      date: '2026-10-06',
+      message: 'Abrazo fraternal desde Uruguay para Clara y todo el grupo.'
+    }
+  ]
+};
+
+export const SEED_IMMERSION_TRIP: ImmersionTrip = {
+  title: 'Viaje de Inmersión Proseminario 2027',
+  datesText: '1 al 11 de Enero',
+  startDate: '2027-01-01',
+  endDate: '2027-01-11',
+  locationName: 'Granja Épicos',
+  locationZone: 'Exaltación de la Cruz, Provincia de Buenos Aires',
+  addressDetails: 'Ruta Provincial 39 y Camino a Parada Robles, Partido de Exaltación de la Cruz, Pcia. de Buenos Aires (a 80 km de Capital Federal)',
+  // Google Maps embed centrado en Exaltación de la Cruz / Capilla del Señor
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52726.83687358245!2d-59.1558231!3d-34.2937746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb786016e3eb73%3A0xa19b48b6c4cfcb64!2sExaltaci%C3%B3n%20de%20la%20Cruz%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar',
+  googleMapsLink: 'https://maps.google.com/?q=Exaltacion+de+la+Cruz+Buenos+Aires+Granja+Epicos',
+  description: 'Once días de inmersión total en la respiración de la naturaleza, el trabajo comunitario en la tierra biodinámica, la celebración diaria del Acto de Consagración del Hombre y el discernimiento de la vocación sacerdotal.',
+  objectives: [
+    'Encuentro vivo con la sustancia de la Tierra: labores biodinámicas en los campos y huertas de Granja Épicos.',
+    'Ritmo sacramental cotidiano: celebración matutina del Acto de Consagración del Hombre en la capilla del predio.',
+    'Estudio profundo de los Evangelios, Cristología antroposófica y oratoria sagrada.',
+    'Coloquios individuales de discernimiento con los sacerdotes acompañantes.',
+    'Convivencia fraterna real: cocina compartida, euritmia en la naturaleza y silencios conscientes.'
+  ],
+  dailyRhythm: [
+    { time: '06:30 hs', activity: 'Despertar y recogimiento', detail: 'Silencio interior y preparación para el oficio sacro.' },
+    { time: '07:15 hs', activity: 'Acto de Consagración del Hombre', detail: 'Celebración diaria en la capilla del predio.' },
+    { time: '08:30 hs', activity: 'Desayuno fraternal', detail: 'Alimentos biodinámicos elaborados en Granja Épicos.' },
+    { time: '09:30 hs', activity: 'Trabajo en la Tierra (Granja Épicos)', detail: 'Labores de huerta, preparados biodinámicos, compost y cuidado animal.' },
+    { time: '13:00 hs', activity: 'Almuerzo y pausa reparadora', detail: 'Tiempo de descanso o contemplación en el parque.' },
+    { time: '15:30 hs', activity: 'Seminario de Estudio Evangélico', detail: 'Exégesis del Evangelio de Juan y textos de Rudolf Steiner.' },
+    { time: '17:30 hs', activity: 'Euritmia y Arte de la Palabra', detail: 'Práctica corporal de los gestos sonoros y consonantes sacras.' },
+    { time: '19:30 hs', activity: 'Coloquios de Acompañamiento y Cena', detail: 'Diálogo personal con sacerdotes y cena compartida.' },
+    { time: '21:00 hs', activity: 'Cierre del día y Retrospectiva (Rückschau)', detail: 'Revisión contemplativa de la jornada antes del descanso nocturno.' }
+  ],
+  whatToBring: [
+    'Ropa cómoda y resistente para trabajo en la tierra / huerta (pantalón largo, gorro de sol, guantes de trabajo).',
+    'Calzado cerrado firme y botas de lluvia para el campo.',
+    'Cuaderno de notas personal y Biblia / Evangelio de Juan.',
+    'Ropa clara o apropiada para la asistencia al Acto de Consagración del Hombre.',
+    'Sábanas individuales o bolsa de dormir y toalla.',
+    'Elementos de higiene personal biodegradables / ecológicos.',
+    'Protector solar, repelente de insectos y botella de agua personal.'
+  ],
+  coordinatorName: 'Matías Rinaldi (Coordinador Logístico)',
+  coordinatorContact: '+54 341 498-7712 • matias.rinaldi@proseminario.org'
+};

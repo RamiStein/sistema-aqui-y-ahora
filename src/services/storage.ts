@@ -5,7 +5,12 @@ import {
   BookResource, 
   StudySummary, 
   MeetingRoom, 
-  UserProfile 
+  UserProfile,
+  AttendanceSession,
+  FundraiserCampaign,
+  ImmersionTrip,
+  AttendanceStatus,
+  ContributionDonation
 } from '../types';
 import { 
   SEED_PRIEST_ARTICLES, 
@@ -14,7 +19,10 @@ import {
   SEED_BOOKS, 
   SEED_STUDY_SUMMARIES, 
   SEED_MEETING_ROOMS, 
-  SEED_USERS 
+  SEED_USERS,
+  SEED_ATTENDANCE_SESSIONS,
+  SEED_FUNDRAISER,
+  SEED_IMMERSION_TRIP
 } from '../data/seedData';
 
 const KEYS = {
@@ -25,6 +33,9 @@ const KEYS = {
   SUMMARIES: 'proseminario_summaries_v1',
   MEETINGS: 'proseminario_meetings_v1',
   ACTIVE_USER: 'proseminario_active_user_v1',
+  ATTENDANCE: 'proseminario_attendance_v1',
+  FUNDRAISER: 'proseminario_fundraiser_v1',
+  TRIP: 'proseminario_trip_v1',
 };
 
 function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -169,9 +180,69 @@ export const StorageService = {
     return updated;
   },
 
+  // Attendance Sessions
+  getAttendanceSessions(): AttendanceSession[] {
+    return getFromStorage(KEYS.ATTENDANCE, SEED_ATTENDANCE_SESSIONS);
+  },
+  saveAttendanceSessions(sessions: AttendanceSession[]) {
+    setToStorage(KEYS.ATTENDANCE, sessions);
+  },
+  updateUserAttendance(sessionId: string, userId: string, status: AttendanceStatus, note?: string): AttendanceSession[] {
+    const sessions = this.getAttendanceSessions();
+    const updated = sessions.map(session => {
+      if (session.id !== sessionId) return session;
+      const existingRecordIndex = session.records.findIndex(r => r.userId === userId);
+      let updatedRecords = [...session.records];
+      if (existingRecordIndex >= 0) {
+        updatedRecords[existingRecordIndex] = { userId, status, note };
+      } else {
+        updatedRecords.push({ userId, status, note });
+      }
+      return { ...session, records: updatedRecords };
+    });
+    this.saveAttendanceSessions(updated);
+    return updated;
+  },
+  addAttendanceSession(session: AttendanceSession): AttendanceSession[] {
+    const sessions = [session, ...this.getAttendanceSessions()];
+    this.saveAttendanceSessions(sessions);
+    return sessions;
+  },
+
+  // Fundraiser Campaign
+  getFundraiser(): FundraiserCampaign {
+    return getFromStorage(KEYS.FUNDRAISER, SEED_FUNDRAISER);
+  },
+  saveFundraiser(fundraiser: FundraiserCampaign) {
+    setToStorage(KEYS.FUNDRAISER, fundraiser);
+  },
+  addDonation(donation: Omit<ContributionDonation, 'id' | 'date'>): FundraiserCampaign {
+    const current = this.getFundraiser();
+    const newDonation: ContributionDonation = {
+      ...donation,
+      id: `don_${Date.now()}`,
+      date: new Date().toISOString().split('T')[0]
+    };
+    const updated: FundraiserCampaign = {
+      ...current,
+      currentAmount: current.currentAmount + donation.amount,
+      contributions: [newDonation, ...current.contributions]
+    };
+    this.saveFundraiser(updated);
+    return updated;
+  },
+
+  // Immersion Trip
+  getTrip(): ImmersionTrip {
+    return getFromStorage(KEYS.TRIP, SEED_IMMERSION_TRIP);
+  },
+  saveTrip(trip: ImmersionTrip) {
+    setToStorage(KEYS.TRIP, trip);
+  },
+
   // Active User Profile
   getActiveUser(): UserProfile {
-    return getFromStorage(KEYS.ACTIVE_USER, SEED_USERS[0]);
+    return getFromStorage(KEYS.ACTIVE_USER, SEED_USERS[3]); // Default to Ramiro
   },
   setActiveUser(user: UserProfile) {
     setToStorage(KEYS.ACTIVE_USER, user);
@@ -186,5 +257,8 @@ export const StorageService = {
     localStorage.removeItem(KEYS.SUMMARIES);
     localStorage.removeItem(KEYS.MEETINGS);
     localStorage.removeItem(KEYS.ACTIVE_USER);
+    localStorage.removeItem(KEYS.ATTENDANCE);
+    localStorage.removeItem(KEYS.FUNDRAISER);
+    localStorage.removeItem(KEYS.TRIP);
   }
 };

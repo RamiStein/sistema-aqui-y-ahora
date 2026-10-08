@@ -7,20 +7,23 @@ import {
   BookResource, 
   StudySummary, 
   MeetingRoom,
-  LiturgicalInfo
+  LiturgicalInfo,
+  AttendanceSession,
+  AttendanceStatus,
+  FundraiserCampaign,
+  ImmersionTrip
 } from '../types';
 import { StorageService } from '../services/storage';
 import { CURRENT_LITURGICAL_INFO, SEED_USERS } from '../data/seedData';
 
 export type ActiveTab = 
   | 'inicio' 
-  | 'noticias' 
-  | 'cartelera' 
-  | 'dudas' 
-  | 'bibliografia' 
-  | 'resumenes' 
-  | 'salas' 
-  | 'calendario';
+  | 'inmersion' 
+  | 'recaudacion' 
+  | 'asistencia' 
+  | 'estudio' 
+  | 'salas_cartelera'
+  | 'noticias';
 
 interface AppContextType {
   activeTab: ActiveTab;
@@ -30,6 +33,18 @@ interface AppContextType {
   availableUsers: UserProfile[];
   liturgicalInfo: LiturgicalInfo;
   
+  // Immersion Trip
+  immersionTrip: ImmersionTrip;
+
+  // Attendance
+  attendanceSessions: AttendanceSession[];
+  updateAttendance: (sessionId: string, userId: string, status: AttendanceStatus, note?: string) => void;
+  addAttendanceSession: (title: string, date: string, type: AttendanceSession['type']) => void;
+
+  // Fundraiser Campaign
+  fundraiser: FundraiserCampaign;
+  addDonation: (donorName: string, amount: number, message?: string, isAnonymous?: boolean) => void;
+
   // Articles
   articles: PriestArticle[];
   likeArticle: (id: string) => void;
@@ -87,6 +102,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [books, setBooks] = useState<BookResource[]>([]);
   const [summaries, setSummaries] = useState<StudySummary[]>([]);
   const [meetings, setMeetings] = useState<MeetingRoom[]>([]);
+  
+  // New States
+  const [attendanceSessions, setAttendanceSessions] = useState<AttendanceSession[]>([]);
+  const [fundraiser, setFundraiser] = useState<FundraiserCampaign>(StorageService.getFundraiser());
+  const [immersionTrip, setImmersionTrip] = useState<ImmersionTrip>(StorageService.getTrip());
 
   const [globalSearchQuery, setGlobalSearchQuery] = useState('');
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -101,6 +121,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setBooks(StorageService.getBooks());
     setSummaries(StorageService.getSummaries());
     setMeetings(StorageService.getMeetings());
+    setAttendanceSessions(StorageService.getAttendanceSessions());
+    setFundraiser(StorageService.getFundraiser());
+    setImmersionTrip(StorageService.getTrip());
   }, []);
 
   const showToast = (msg: string) => {
@@ -114,6 +137,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setActiveUserState(user);
     StorageService.setActiveUser(user);
     showToast(`Sesión cambiada a: ${user.name}`);
+  };
+
+  // Attendance actions
+  const updateAttendance = (sessionId: string, userId: string, status: AttendanceStatus, note?: string) => {
+    const updated = StorageService.updateUserAttendance(sessionId, userId, status, note);
+    setAttendanceSessions(updated);
+    showToast('Asistencia actualizada correctamente');
+  };
+
+  const addAttendanceSession = (title: string, date: string, type: AttendanceSession['type']) => {
+    const newSession: AttendanceSession = {
+      id: `att_${Date.now()}`,
+      title,
+      date,
+      type,
+      records: SEED_USERS.map(u => ({ userId: u.id, status: 'presente' }))
+    };
+    const updated = StorageService.addAttendanceSession(newSession);
+    setAttendanceSessions(updated);
+    showToast('Nueva fecha de asistencia creada');
+  };
+
+  // Fundraiser action
+  const addDonation = (donorName: string, amount: number, message?: string, isAnonymous?: boolean) => {
+    const updated = StorageService.addDonation({
+      donorName: isAnonymous ? 'Donante Anónimo' : donorName,
+      amount,
+      message,
+      isAnonymous
+    });
+    setFundraiser(updated);
+    showToast('¡Aporte registrado! Muchas gracias por el apoyo al viaje');
   };
 
   const likeArticle = (id: string) => {
@@ -245,6 +300,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setActiveUser,
         availableUsers: SEED_USERS,
         liturgicalInfo,
+        immersionTrip,
+        attendanceSessions,
+        updateAttendance,
+        addAttendanceSession,
+        fundraiser,
+        addDonation,
         articles,
         likeArticle,
         bulletinPosts,

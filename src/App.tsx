@@ -5,13 +5,12 @@ import { LiturgicalRibbon } from './components/layout/LiturgicalRibbon';
 import { SidebarNav } from './components/layout/SidebarNav';
 import { Footer } from './components/layout/Footer';
 import { OverviewModule } from './components/modules/OverviewModule';
+import { TripModule } from './components/modules/TripModule';
+import { FundraiserModule } from './components/modules/FundraiserModule';
+import { AttendanceModule } from './components/modules/AttendanceModule';
+import { StudyModule } from './components/modules/StudyModule';
+import { CommunityRoomsModule } from './components/modules/CommunityRoomsModule';
 import { NewsModule } from './components/modules/NewsModule';
-import { BoardModule } from './components/modules/BoardModule';
-import { QuestionsModule } from './components/modules/QuestionsModule';
-import { LibraryModule } from './components/modules/LibraryModule';
-import { SummariesModule } from './components/modules/SummariesModule';
-import { MeetingsModule } from './components/modules/MeetingsModule';
-import { CalendarModule } from './components/modules/CalendarModule';
 import { SearchModal } from './components/common/SearchModal';
 import { JitsiVideoModal } from './components/common/JitsiVideoModal';
 import { CheckCircle2 } from 'lucide-react';
@@ -67,13 +66,12 @@ const MainLayout: React.FC = () => {
           {/* Dynamic Module Content View */}
           <main className="flex-1 w-full min-w-0">
             {activeTab === 'inicio' && <OverviewModule />}
+            {activeTab === 'inmersion' && <TripModule />}
+            {activeTab === 'recaudacion' && <FundraiserModule />}
+            {activeTab === 'asistencia' && <AttendanceModule />}
+            {activeTab === 'estudio' && <StudyModule />}
+            {activeTab === 'salas_cartelera' && <CommunityRoomsModule />}
             {activeTab === 'noticias' && <NewsModule />}
-            {activeTab === 'cartelera' && <BoardModule />}
-            {activeTab === 'dudas' && <QuestionsModule />}
-            {activeTab === 'bibliografia' && <LibraryModule />}
-            {activeTab === 'resumenes' && <SummariesModule />}
-            {activeTab === 'salas' && <MeetingsModule />}
-            {activeTab === 'calendario' && <CalendarModule />}
           </main>
         </div>
       </div>

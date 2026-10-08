@@ -8,6 +8,8 @@ export interface UserProfile {
   locality: string;
   generation: string; // e.g. "Cohorte 2026", "Comunidad Buenos Aires", etc.
   bio?: string;
+  phone?: string;
+  email?: string;
 }
 
 export type LiturgicalSeason = 
@@ -93,9 +95,9 @@ export interface BookResource {
   category: 'cristologia' | 'evangelios' | 'liturgia' | 'antroposofia_general' | 'vida_meditativa';
   description: string;
   coverImage?: string;
-  recommendedFor: string; // e.g., "Módulo 1 - El Misterio del Gólgota"
+  recommendedFor: string;
   pageCount?: number;
-  pdfUrl?: string; // external or internal link
+  pdfUrl?: string;
   audioUrl?: string;
   essentialQuotes: string[];
   readingStatus?: 'pendiente' | 'leyendo' | 'completado';
@@ -109,7 +111,7 @@ export interface StudySummary {
   date: string;
   relatedBookOrLecture?: string;
   cycleModule: string;
-  content: string; // Markdown / formatted text
+  content: string;
   keyTakeaways: string[];
   tags: string[];
   downloadsCount: number;
@@ -122,10 +124,10 @@ export interface MeetingRoom {
   description: string;
   host: UserProfile;
   date: string; // YYYY-MM-DD
-  time: string; // HH:mm (e.g. 19:30)
+  time: string; // HH:mm
   durationMinutes: number;
   modality: 'virtual' | 'hibrido' | 'presencial';
-  locationOrPlatform: string; // e.g. "Jitsi Meet Integrado" o "Sede Comunidad"
+  locationOrPlatform: string;
   jitsiRoomName?: string;
   topicCategory: 'lectura_evangelio' | 'conversacion_libre' | 'repaso_conferencias' | 'practica_habla';
   participantsCount: number;
@@ -141,4 +143,79 @@ export interface ProseminarModuleInfo {
   description: string;
   essentialThemes: string[];
   assignedPriest: string;
+}
+
+/* --- Nuevos Sistemas Solicitados --- */
+
+// 1. Sistema de Asistencia
+export type AttendanceStatus = 'presente' | 'ausente' | 'justificado';
+
+export interface AttendanceRecordItem {
+  userId: string;
+  status: AttendanceStatus;
+  note?: string;
+}
+
+export interface AttendanceSession {
+  id: string;
+  date: string; // YYYY-MM-DD
+  title: string;
+  type: 'clase' | 'circulo' | 'encuentro' | 'retiro' | 'taller';
+  records: AttendanceRecordItem[];
+}
+
+// 2. Sistema de Recaudación y Fondo Comunitario
+export interface ContributionDonation {
+  id: string;
+  donorName: string;
+  amount: number;
+  date: string;
+  message?: string;
+  isAnonymous?: boolean;
+}
+
+export interface FundraiserCampaign {
+  title: string;
+  subtitle: string;
+  goalAmount: number;
+  currentAmount: number;
+  currency: string;
+  videoUrl: string;
+  videoThumbnail: string;
+  videoTitle: string;
+  videoDescription: string;
+  aliasCbu: string;
+  cbuNumber: string;
+  titular: string;
+  banco: string;
+  mercadoPagoLink?: string;
+  breakdown: {
+    label: string;
+    amount: number;
+    description: string;
+  }[];
+  contributions: ContributionDonation[];
+}
+
+// 3. Viaje de Inmersión (Granja Épicos, Exaltación de la Cruz)
+export interface ImmersionTrip {
+  title: string;
+  datesText: string; // "1 al 11 de Enero"
+  startDate: string;
+  endDate: string;
+  locationName: string; // "Granja Épicos"
+  locationZone: string; // "Exaltación de la Cruz, Buenos Aires"
+  addressDetails: string;
+  mapEmbedUrl: string;
+  googleMapsLink: string;
+  description: string;
+  objectives: string[];
+  dailyRhythm: {
+    time: string;
+    activity: string;
+    detail: string;
+  }[];
+  whatToBring: string[];
+  coordinatorName: string;
+  coordinatorContact: string;
 }

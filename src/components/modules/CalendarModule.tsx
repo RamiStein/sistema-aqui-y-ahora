@@ -176,7 +176,7 @@ export const CalendarModule: React.FC = () => {
                     <span>Tutoría: {mod.assignedPriest}</span>
                   </div>
                   <button
-                    onClick={() => setActiveTab('bibliografia')}
+                    onClick={() => setActiveTab('estudio')}
                     className="text-amber-800 hover:text-amber-950 font-semibold"
                   >
                     Ver lecturas →

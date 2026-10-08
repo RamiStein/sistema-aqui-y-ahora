@@ -124,7 +124,7 @@ export const SearchModal: React.FC = () => {
                   {results.questions.map(q => (
                     <div
                       key={q.id}
-                      onClick={() => handleNavigate('dudas')}
+                      onClick={() => handleNavigate('estudio')}
                       className="p-3 bg-stone-50 hover:bg-amber-50/50 rounded-xl cursor-pointer border border-stone-200 hover:border-amber-300 transition-all flex items-center justify-between"
                     >
                       <div>
@@ -148,7 +148,7 @@ export const SearchModal: React.FC = () => {
                   {results.books.map(b => (
                     <div
                       key={b.id}
-                      onClick={() => handleNavigate('bibliografia')}
+                      onClick={() => handleNavigate('estudio')}
                       className="p-3 bg-stone-50 hover:bg-amber-50/50 rounded-xl cursor-pointer border border-stone-200 hover:border-amber-300 transition-all flex items-center justify-between"
                     >
                       <div>
@@ -172,7 +172,7 @@ export const SearchModal: React.FC = () => {
                   {results.summaries.map(s => (
                     <div
                       key={s.id}
-                      onClick={() => handleNavigate('resumenes')}
+                      onClick={() => handleNavigate('estudio')}
                       className="p-3 bg-stone-50 hover:bg-amber-50/50 rounded-xl cursor-pointer border border-stone-200 hover:border-amber-300 transition-all flex items-center justify-between"
                     >
                       <div>
@@ -220,7 +220,7 @@ export const SearchModal: React.FC = () => {
                   {results.posts.map(p => (
                     <div
                       key={p.id}
-                      onClick={() => handleNavigate('cartelera')}
+                      onClick={() => handleNavigate('salas_cartelera')}
                       className="p-3 bg-stone-50 hover:bg-amber-50/50 rounded-xl cursor-pointer border border-stone-200 hover:border-amber-300 transition-all flex items-center justify-between"
                     >
                       <div>
@@ -244,7 +244,7 @@ export const SearchModal: React.FC = () => {
                   {results.meetings.map(m => (
                     <div
                       key={m.id}
-                      onClick={() => handleNavigate('salas')}
+                      onClick={() => handleNavigate('salas_cartelera')}
                       className="p-3 bg-stone-50 hover:bg-amber-50/50 rounded-xl cursor-pointer border border-stone-200 hover:border-amber-300 transition-all flex items-center justify-between"
                     >
                       <div>

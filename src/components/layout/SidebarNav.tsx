@@ -2,14 +2,14 @@ import React from 'react';
 import { useApp, ActiveTab } from '../../context/AppContext';
 import { 
   Home, 
-  Newspaper, 
-  Bell, 
-  HelpCircle, 
-  BookOpen, 
-  FileText, 
+  MapPin, 
+  HeartHandshake, 
+  UserCheck, 
+  GraduationCap, 
   Video, 
-  CalendarDays,
-  Sparkles
+  Newspaper,
+  Sparkles,
+  Calendar
 } from 'lucide-react';
 
 interface SidebarNavProps {
@@ -17,10 +17,16 @@ interface SidebarNavProps {
 }
 
 export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
-  const { activeTab, setActiveTab, articles, bulletinPosts, questions, meetings, summaries } = useApp();
+  const { 
+    activeTab, 
+    setActiveTab, 
+    fundraiser, 
+    availableUsers,
+    attendanceSessions,
+    articles
+  } = useApp();
 
-  const unresolvedQuestionsCount = questions.filter(q => !q.resolved).length;
-  const liveMeetingsCount = meetings.filter(m => m.isLiveNow).length;
+  const percentage = Math.round((fundraiser.currentAmount / fundraiser.goalAmount) * 100);
 
   const navItems: Array<{
     id: ActiveTab;
@@ -29,26 +35,48 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
     badge?: string | number;
     badgeColor?: string;
   }> = [
-    { id: 'inicio', label: 'Inicio (Aquí y Ahora)', icon: Home },
-    { id: 'noticias', label: 'Noticias de Sacerdotes', icon: Newspaper, badge: articles.length },
-    { id: 'cartelera', label: 'Cartelera Comunitaria', icon: Bell, badge: bulletinPosts.length },
     { 
-      id: 'dudas', 
-      label: 'Sacarse las Dudas', 
-      icon: HelpCircle, 
-      badge: unresolvedQuestionsCount > 0 ? `${unresolvedQuestionsCount} abiertas` : undefined,
-      badgeColor: 'bg-amber-100 text-amber-900 border-amber-300'
+      id: 'inicio', 
+      label: 'Inicio (Aquí y Ahora)', 
+      icon: Home 
     },
-    { id: 'bibliografia', label: 'Bibliografía y Lecturas', icon: BookOpen },
-    { id: 'resumenes', label: 'Resúmenes de Estudio', icon: FileText, badge: summaries.length },
     { 
-      id: 'salas', 
-      label: 'Salas de Conversación', 
-      icon: Video,
-      badge: liveMeetingsCount > 0 ? 'EN VIVO' : `${meetings.length}`,
-      badgeColor: liveMeetingsCount > 0 ? 'bg-red-500 text-white animate-pulse' : undefined
+      id: 'inmersion', 
+      label: 'Viaje Granja Épicos', 
+      icon: MapPin, 
+      badge: 'Ene 1-11',
+      badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300 font-bold'
     },
-    { id: 'calendario', label: 'Módulos y Calendario', icon: CalendarDays },
+    { 
+      id: 'recaudacion', 
+      label: 'Fondo Solidario & Video', 
+      icon: HeartHandshake,
+      badge: `${percentage}%`,
+      badgeColor: 'bg-amber-100 text-amber-950 border-amber-300 font-bold'
+    },
+    { 
+      id: 'asistencia', 
+      label: 'Comunidad & Asistencia', 
+      icon: UserCheck, 
+      badge: `${availableUsers.length}`,
+      badgeColor: 'bg-stone-100 text-stone-700 border-stone-200'
+    },
+    { 
+      id: 'estudio', 
+      label: 'Estudio & Formación', 
+      icon: GraduationCap 
+    },
+    { 
+      id: 'salas_cartelera', 
+      label: 'Salas & Cartelera', 
+      icon: Video 
+    },
+    { 
+      id: 'noticias', 
+      label: 'Cartas de Sacerdotes', 
+      icon: Newspaper, 
+      badge: articles.length 
+    },
   ];
 
   const handleSelect = (tab: ActiveTab) => {
@@ -61,7 +89,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
       {/* Navigation Menu */}
       <nav className="bg-white rounded-2xl border border-stone-200/90 p-3 shadow-xs space-y-1">
         <div className="px-3 py-2 text-[11px] font-bold text-stone-400 uppercase tracking-wider">
-          Navegación del Proseminario
+          Menú del Proseminario
         </div>
 
         {navItems.map((item) => {
@@ -104,18 +132,25 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
         })}
       </nav>
 
-      {/* Daily Spiritual Thought / Proseminary Focus */}
-      <div className="hidden md:block bg-gradient-to-br from-[#FAF5EE] to-[#F5ECE0] border border-amber-200/80 rounded-2xl p-4 text-xs text-stone-700 shadow-2xs relative overflow-hidden">
-        <div className="flex items-center space-x-2 text-amber-900 font-bold mb-2">
-          <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-          <span className="text-[11px] uppercase tracking-wider">Inspiración del Camino</span>
+      {/* Immersion Trip Mini-Teaser */}
+      <div 
+        onClick={() => setActiveTab('inmersion')}
+        className="hidden md:block bg-gradient-to-br from-[#1C2618] to-[#2A3723] border border-emerald-900/50 rounded-2xl p-4 text-xs text-white shadow-xs cursor-pointer hover:border-emerald-500 transition-all group"
+      >
+        <div className="flex items-center space-x-1.5 text-emerald-300 font-bold mb-1">
+          <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-[10px] uppercase tracking-wider">Próxima Inmersión</span>
         </div>
-        <p className="font-serif italic text-stone-800 leading-relaxed mb-2">
-          «El ser humano no vive sólo del pan terrenal, sino de la Palabra viva que desciende cuando dos o tres se reúnen en Su Nombre.»
+        <h4 className="font-serif-sacred font-bold text-sm text-stone-100 group-hover:text-emerald-200 transition-colors">
+          Granja Épicos
+        </h4>
+        <p className="text-[11px] text-stone-300 mt-0.5">
+          1 al 11 de Enero • Exaltación de la Cruz, Bs. As.
         </p>
-        <span className="text-[10px] text-amber-950 font-semibold block text-right">
-          — Friedrich Rittelmeyer
-        </span>
+        <div className="mt-2 text-[10px] text-amber-300 font-semibold flex items-center justify-between border-t border-white/10 pt-2">
+          <span>Ver mapa y programa</span>
+          <span>→</span>
+        </div>
       </div>
     </aside>
   );

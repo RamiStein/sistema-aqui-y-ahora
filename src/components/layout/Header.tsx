@@ -48,8 +48,8 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileNav, isMobileNavOp
                   borderColor: `${liturgicalInfo.colorHex}40`,
                   color: liturgicalInfo.colorHex 
                 }}
-                onClick={() => setActiveTab('calendario')}
-                title="Ver calendario litúrgico y del proseminario"
+                onClick={() => setActiveTab('inmersion')}
+                title="Ver viaje de inmersión y ritmo sagrado"
               >
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: liturgicalInfo.colorHex }} />
                 <span>{liturgicalInfo.name.split('(')[0]}</span>
