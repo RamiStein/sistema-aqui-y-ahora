@@ -20,12 +20,26 @@ import {
 import { Modal } from '../common/Modal';
 
 export const ClassesCalendarModule: React.FC = () => {
-  const { classes, addClass, availableUsers, setActiveTab, joinMeeting, meetings, showToast } = useApp();
+  const { 
+    classes, 
+    addClass, 
+    updateClassNote,
+    availableUsers, 
+    isPriest,
+    setActiveTab, 
+    joinMeeting, 
+    meetings, 
+    showToast 
+  } = useApp();
   
   const [filterTime, setFilterTime] = useState<'todas' | 'proximas' | 'pasadas'>('todas');
   const [selectedPriestId, setSelectedPriestId] = useState<string>('todos');
   const [selectedModule, setSelectedModule] = useState<string>('todos');
   const [isNewClassModalOpen, setIsNewClassModalOpen] = useState(false);
+
+  // Note editor modal state
+  const [editingClass, setEditingClass] = useState<ProseminarClass | null>(null);
+  const [noteText, setNoteText] = useState('');
 
   // Form states for adding a new class
   const [title, setTitle] = useState('');
@@ -111,13 +125,20 @@ export const ClassesCalendarModule: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsNewClassModalOpen(true)}
-          className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Agendar Nueva Clase</span>
-        </button>
+        {isPriest ? (
+          <button
+            onClick={() => setIsNewClassModalOpen(true)}
+            className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Agendar Nueva Clase (Gestor)</span>
+          </button>
+        ) : (
+          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-amber-700" />
+            <span>Docencia y temarios a cargo de los Sacerdotes</span>
+          </div>
+        )}
       </div>
 
       {/* Filter and Switcher Bar */}
@@ -310,14 +331,31 @@ export const ClassesCalendarModule: React.FC = () => {
                     </div>
                   )}
 
-                  {/* Summary / Notes for past classes */}
-                  {isPast && cls.summaryNote && (
-                    <div className="flex items-start space-x-2 text-xs text-stone-700 bg-stone-50 p-3 rounded-xl border border-stone-200">
-                      <FileText className="w-4 h-4 text-stone-500 shrink-0 mt-0.5" />
-                      <div>
-                        <strong className="text-stone-800 font-semibold">Resumen / Síntesis de la clase:</strong>{' '}
-                        <span className="font-serif">{cls.summaryNote}</span>
+                  {/* Summary / Notes for classes & Priest note upload */}
+                  {(cls.summaryNote || isPriest) && (
+                    <div className="flex items-start justify-between gap-3 text-xs text-stone-700 bg-stone-50 p-3.5 rounded-xl border border-stone-200">
+                      <div className="flex items-start space-x-2">
+                        <FileText className="w-4 h-4 text-amber-800 shrink-0 mt-0.5" />
+                        <div>
+                          <strong className="text-stone-900 font-semibold">Notas y Contenido de la Clase:</strong>{' '}
+                          <span className="font-serif block mt-0.5 text-stone-700">
+                            {cls.summaryNote || <span className="italic text-stone-400">Sin notas ni síntesis cargadas todavía.</span>}
+                          </span>
+                        </div>
                       </div>
+
+                      {isPriest && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingClass(cls);
+                            setNoteText(cls.summaryNote || '');
+                          }}
+                          className="shrink-0 px-2.5 py-1 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-[11px] transition-colors"
+                        >
+                          {cls.summaryNote ? 'Editar Notas' : '+ Subir Notas'}
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>
@@ -518,6 +556,56 @@ export const ClassesCalendarModule: React.FC = () => {
               className="px-5 py-2 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs font-semibold shadow-xs"
             >
               Agendar Clase
+            </button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Modal: Subir / Editar Notas de Clase (Gestor Sacerdotal) */}
+      <Modal
+        isOpen={!!editingClass}
+        onClose={() => setEditingClass(null)}
+        title="Subir / Editar Contenido y Notas de Clase"
+        subtitle={editingClass ? `${editingClass.title} (${editingClass.date})` : ''}
+        maxWidth="lg"
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (editingClass) {
+              updateClassNote(editingClass.id, noteText.trim());
+              setEditingClass(null);
+            }
+          }}
+          className="space-y-4"
+        >
+          <div>
+            <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+              Síntesis o Apuntes de la Clase (Gestor Sacerdotal)
+            </label>
+            <textarea
+              rows={5}
+              required
+              value={noteText}
+              onChange={(e) => setNoteText(e.target.value)}
+              placeholder="Escribe la síntesis doctrinal, preguntas trabajadas y orientaciones prácticas..."
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+
+          <div className="flex items-center justify-end space-x-3 pt-2">
+            <button
+              type="button"
+              onClick={() => setEditingClass(null)}
+              className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-600 hover:bg-stone-50"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+            >
+              Guardar Notas de Clase
             </button>
           </div>
         </form>

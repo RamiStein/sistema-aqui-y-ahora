@@ -10,16 +10,54 @@ import {
   Sparkles, 
   Quote, 
   Search,
-  Filter
+  Filter,
+  Plus,
+  ShieldCheck
 } from 'lucide-react';
 import { Modal } from '../common/Modal';
 
 export const LibraryModule: React.FC = () => {
-  const { books, updateBookStatus } = useApp();
+  const { books, updateBookStatus, addBook, isPriest, showToast } = useApp();
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
   const [statusFilter, setStatusFilter] = useState<string>('todos');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBook, setSelectedBook] = useState<BookResource | null>(null);
+
+  // Modal to upload book for priests
+  const [isAddBookModalOpen, setIsAddBookModalOpen] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+  const [newAuthor, setNewAuthor] = useState('Rudolf Steiner');
+  const [newCategory, setNewCategory] = useState<BookResource['category']>('cristologia');
+  const [newDescription, setNewDescription] = useState('');
+  const [newRecommendedFor, setNewRecommendedFor] = useState('');
+  const [newPdfUrl, setNewPdfUrl] = useState('');
+  const [newQuote, setNewQuote] = useState('');
+
+  const handleUploadBook = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newTitle.trim() || !newDescription.trim()) {
+      showToast('Por favor completa el título y la descripción de la obra');
+      return;
+    }
+
+    addBook({
+      title: newTitle.trim(),
+      author: newAuthor.trim() || 'Rudolf Steiner',
+      category: newCategory,
+      description: newDescription.trim(),
+      recommendedFor: newRecommendedFor.trim() || 'Lectura recomendada del Proseminario',
+      pdfUrl: newPdfUrl.trim() || undefined,
+      essentialQuotes: newQuote.trim() ? [newQuote.trim()] : [],
+      readingStatus: 'pendiente'
+    });
+
+    setIsAddBookModalOpen(false);
+    setNewTitle('');
+    setNewDescription('');
+    setNewRecommendedFor('');
+    setNewPdfUrl('');
+    setNewQuote('');
+  };
 
   const categories = [
     { id: 'todos', label: 'Toda la Bibliografía' },
@@ -68,6 +106,21 @@ export const LibraryModule: React.FC = () => {
             Corpus de lecturas fundamentales para el discipulado y el conocimiento teológico: ciclos de conferencias de Rudolf Steiner, ensayos de Friedrich Rittelmeyer y Emil Bock.
           </p>
         </div>
+
+        {isPriest ? (
+          <button
+            onClick={() => setIsAddBookModalOpen(true)}
+            className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Subir Bibliografía (Gestor)</span>
+          </button>
+        ) : (
+          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-amber-700" />
+            <span>Curada por los Sacerdotes Tutores</span>
+          </div>
+        )}
       </div>
 
       {/* Filter and Search Bar */}
@@ -264,6 +317,135 @@ export const LibraryModule: React.FC = () => {
           </div>
         </Modal>
       )}
+
+      {/* Modal: Subir Bibliografía / Texto de Estudio (Gestor Sacerdotal) */}
+      <Modal
+        isOpen={isAddBookModalOpen}
+        onClose={() => setIsAddBookModalOpen(false)}
+        title="Subir Texto de Estudio o Bibliografía"
+        subtitle="Incorpora un ciclo de conferencias, obra fundamental o ensayo pastoral al corpus del seminario"
+        maxWidth="xl"
+      >
+        <form onSubmit={handleUploadBook} className="space-y-4">
+          <div>
+            <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+              Título de la Obra o Ciclo *
+            </label>
+            <input
+              type="text"
+              required
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+              placeholder="Ej: GA 131 - De Jesús a Cristo"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+                Autor *
+              </label>
+              <input
+                type="text"
+                required
+                value={newAuthor}
+                onChange={(e) => setNewAuthor(e.target.value)}
+                placeholder="Ej: Rudolf Steiner, Friedrich Rittelmeyer..."
+                className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+                Categoría Temática *
+              </label>
+              <select
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value as BookResource['category'])}
+                className="w-full px-3 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              >
+                <option value="cristologia">Cristología Cósmica</option>
+                <option value="evangelios">Evangelios y Nuevo Testamento</option>
+                <option value="liturgia">Liturgia y Sacramentos</option>
+                <option value="vida_meditativa">Vida Meditativa y Ritmo Anual</option>
+                <option value="antroposofia_general">Antroposofía General</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+              Descripción y Enfoque Teológico *
+            </label>
+            <textarea
+              rows={3}
+              required
+              value={newDescription}
+              onChange={(e) => setNewDescription(e.target.value)}
+              placeholder="Síntesis del contenido, época del ciclo y relevancia para los seminaristas..."
+              className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs sm:text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+                Recomendado Para
+              </label>
+              <input
+                type="text"
+                value={newRecommendedFor}
+                onChange={(e) => setNewRecommendedFor(e.target.value)}
+                placeholder="Ej: Módulo 1 y Módulo 2"
+                className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+                Enlace de Lectura o PDF (Opcional)
+              </label>
+              <input
+                type="url"
+                value={newPdfUrl}
+                onChange={(e) => setNewPdfUrl(e.target.value)}
+                placeholder="https://bdn-steiner.ru/..."
+                className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
+              Cita o Pensamiento Central (Opcional)
+            </label>
+            <input
+              type="text"
+              value={newQuote}
+              onChange={(e) => setNewQuote(e.target.value)}
+              placeholder="«El Cristo no vino solo a enseñar, sino a obrar como hecho cósmico...»"
+              className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            />
+          </div>
+
+          <div className="flex items-center justify-end space-x-3 pt-2">
+            <button
+              type="button"
+              onClick={() => setIsAddBookModalOpen(false)}
+              className="px-4 py-2 rounded-xl border border-stone-200 text-xs font-medium text-stone-600 hover:bg-stone-50"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className="px-5 py-2 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+            >
+              Guardar en Bibliografía
+            </button>
+          </div>
+        </form>
+      </Modal>
     </div>
   );
 };

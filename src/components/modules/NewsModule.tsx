@@ -16,11 +16,11 @@ import {
 import { Modal } from '../common/Modal';
 
 export const NewsModule: React.FC = () => {
-  const { articles, likeArticle, activeUser, showToast } = useApp();
+  const { articles, likeArticle, addArticle, activeUser, isPriest, showToast } = useApp();
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
   const [readingArticle, setReadingArticle] = useState<PriestArticle | null>(null);
 
-  // New article state (for priests/coordinators)
+  // New article state (for priests)
   const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newSubtitle, setNewSubtitle] = useState('');
@@ -47,30 +47,24 @@ export const NewsModule: React.FC = () => {
       return;
     }
 
-    const createdArticle: PriestArticle = {
-      id: `art_${Date.now()}`,
+    addArticle({
       title: newTitle.trim(),
       subtitle: newSubtitle.trim() || undefined,
       authorName: activeUser.name,
-      authorTitle: activeUser.role === 'sacerdote' ? 'Sacerdote Tutor' : 'Equipo Proseminario',
+      authorTitle: 'Sacerdote Tutor • Comunidad de Cristianos',
       authorAvatar: activeUser.avatar,
-      date: new Date().toISOString().split('T')[0],
       category: newCategory,
       content: newContent.trim(),
       readingTimeMinutes: Math.max(2, Math.ceil(newContent.length / 450)),
       highlightQuote: newHighlight.trim() || undefined,
-      likes: 1,
       pinned: false
-    };
+    });
 
-    // We can save via storage
-    articles.unshift(createdArticle);
     setIsPublishModalOpen(false);
     setNewTitle('');
     setNewSubtitle('');
     setNewContent('');
     setNewHighlight('');
-    showToast('Mensaje pastoral publicado para todo el proseminario');
   };
 
   const handleShare = (article: PriestArticle) => {
@@ -97,15 +91,20 @@ export const NewsModule: React.FC = () => {
           </p>
         </div>
 
-        {/* Action Button: Publish for priest/coordinator */}
-        {(activeUser.role === 'sacerdote' || activeUser.role === 'coordinador') && (
+        {/* Action Button: Publish for priests */}
+        {isPriest ? (
           <button
             onClick={() => setIsPublishModalOpen(true)}
             className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
           >
             <Plus className="w-4 h-4" />
-            <span>Redactar Carta Pastoral</span>
+            <span>Redactar Carta Pastoral (Gestor)</span>
           </button>
+        ) : (
+          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-amber-700" />
+            <span>Publicación reservada a Sacerdotes Tutores</span>
+          </div>
         )}
       </div>
 

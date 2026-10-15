@@ -13,7 +13,8 @@ import {
   CalendarDays,
   Play, 
   HelpCircle,
-  Users
+  Users,
+  UserPlus
 } from 'lucide-react';
 
 export const OverviewModule: React.FC = () => {
@@ -27,6 +28,7 @@ export const OverviewModule: React.FC = () => {
     availableUsers,
     attendanceSessions,
     classes,
+    setIsAuthModalOpen,
     joinMeeting 
   } = useApp();
 
@@ -97,6 +99,14 @@ export const OverviewModule: React.FC = () => {
             >
               <UserCheck className="w-4 h-4 text-amber-300" />
               <span>Llevar Asistencia</span>
+            </button>
+
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center space-x-2 shadow-md"
+            >
+              <UserPlus className="w-4 h-4 text-emerald-200" />
+              <span>Inscribirme / Ingresar</span>
             </button>
           </div>
         </div>

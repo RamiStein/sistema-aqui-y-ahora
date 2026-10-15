@@ -12,12 +12,13 @@ import {
   Users, 
   Car, 
   Sparkles,
-  Filter
+  Filter,
+  ShieldCheck
 } from 'lucide-react';
 import { Modal } from '../common/Modal';
 
 export const BoardModule: React.FC = () => {
-  const { bulletinPosts, addBulletinPost, activeUser, showToast } = useApp();
+  const { bulletinPosts, addBulletinPost, activeUser, isPriest, showToast } = useApp();
   const [selectedCategory, setSelectedCategory] = useState<string>('todos');
   const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
 
@@ -104,13 +105,20 @@ export const BoardModule: React.FC = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsNewPostModalOpen(true)}
-          className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Publicar un Aviso</span>
-        </button>
+        {isPriest ? (
+          <button
+            onClick={() => setIsNewPostModalOpen(true)}
+            className="self-start md:self-auto px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Publicar un Aviso (Gestor)</span>
+          </button>
+        ) : (
+          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-amber-700" />
+            <span>Cartelera comunitaria moderada por los Sacerdotes</span>
+          </div>
+        )}
       </div>
 
       {/* Categories Bar */}

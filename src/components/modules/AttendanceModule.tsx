@@ -15,7 +15,8 @@ import {
   MapPin, 
   Filter,
   Check,
-  UserCheck
+  UserCheck,
+  UserPlus
 } from 'lucide-react';
 import { AttendanceStatus, AttendanceSession, UserProfile } from '../../types';
 import { Modal } from '../common/Modal';
@@ -26,6 +27,9 @@ export const AttendanceModule: React.FC = () => {
     updateAttendance, 
     addAttendanceSession, 
     availableUsers, 
+    activeUser,
+    isPriest,
+    setIsAuthModalOpen,
     showToast 
   } = useApp();
 
@@ -138,7 +142,16 @@ export const AttendanceModule: React.FC = () => {
             </button>
           </div>
 
-          {activeSubTab === 'asistencia' && (
+          <button
+            onClick={() => setIsAuthModalOpen(true)}
+            className="px-3.5 py-2 bg-emerald-800 hover:bg-emerald-900 text-white rounded-xl text-xs font-semibold flex items-center space-x-1.5 shadow-xs transition-colors shrink-0"
+            title="Inscribir participante para aparecer en la lista de asistencia"
+          >
+            <UserPlus className="w-3.5 h-3.5" />
+            <span>Inscribirme en la Lista</span>
+          </button>
+
+          {isPriest && activeSubTab === 'asistencia' && (
             <button
               onClick={() => setIsNewSessionModalOpen(true)}
               className="px-3.5 py-2 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs font-semibold flex items-center space-x-1.5 shadow-xs transition-colors shrink-0"
@@ -148,6 +161,28 @@ export const AttendanceModule: React.FC = () => {
             </button>
           )}
         </div>
+      </div>
+
+      {/* Onboarding Callout for Attendance */}
+      <div className="bg-gradient-to-r from-emerald-50 via-teal-50 to-stone-50 border border-emerald-200/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-start space-x-3">
+          <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
+            <UserCheck className="w-4 h-4" />
+          </div>
+          <div>
+            <span className="font-bold text-emerald-950 block">Registro de Asistencia del Proseminario</span>
+            <p className="text-stone-600 mt-0.5">
+              Darse de alta en el sistema habilita figurar automáticamente en la lista de asistencia ({availableUsers.length} integrantes registrados). Usuario activo actual: <strong>{activeUser.name}</strong> ({isPriest ? 'Sacerdote Gestor' : 'Participante'}).
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setIsAuthModalOpen(true)}
+          className="self-start sm:self-auto px-3.5 py-1.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-xs transition-colors shrink-0"
+        >
+          + Inscribirme o Cambiar Usuario
+        </button>
       </div>
 
       {/* Subtab 1: Llevar Asistencia */}

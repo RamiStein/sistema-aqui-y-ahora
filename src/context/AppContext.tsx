@@ -33,6 +33,10 @@ interface AppContextType {
   activeUser: UserProfile;
   setActiveUser: (user: UserProfile) => void;
   availableUsers: UserProfile[];
+  registerParticipant: (data: { name: string; locality: string; email?: string; phone?: string; bio?: string }) => void;
+  isPriest: boolean;
+  isAuthModalOpen: boolean;
+  setIsAuthModalOpen: (open: boolean) => void;
   liturgicalInfo: LiturgicalInfo;
   
   // Immersion Trip
@@ -41,6 +45,7 @@ interface AppContextType {
   // Classes Calendar
   classes: ProseminarClass[];
   addClass: (cls: Omit<ProseminarClass, 'id'>) => void;
+  updateClassNote: (classId: string, note: string) => void;
 
   // Attendance
   attendanceSessions: AttendanceSession[];
@@ -54,6 +59,7 @@ interface AppContextType {
   // Articles
   articles: PriestArticle[];
   likeArticle: (id: string) => void;
+  addArticle: (article: Omit<PriestArticle, 'id' | 'likes' | 'date'>) => void;
 
   // Bulletin
   bulletinPosts: BulletinPost[];
@@ -68,6 +74,7 @@ interface AppContextType {
   // Books
   books: BookResource[];
   updateBookStatus: (bookId: string, status: BookResource['readingStatus']) => void;
+  addBook: (book: Omit<BookResource, 'id'>) => void;
 
   // Summaries
   summaries: StudySummary[];
@@ -100,7 +107,11 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('inicio');
   const [activeUser, setActiveUserState] = useState<UserProfile>(StorageService.getActiveUser());
+  const [availableUsers, setAvailableUsers] = useState<UserProfile[]>(StorageService.getUsers());
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [liturgicalInfo] = useState<LiturgicalInfo>(CURRENT_LITURGICAL_INFO);
+
+  const isPriest = activeUser.role === 'sacerdote';
 
   const [articles, setArticles] = useState<PriestArticle[]>([]);
   const [bulletinPosts, setBulletinPosts] = useState<BulletinPost[]>([]);
@@ -122,6 +133,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Initialize data from storage
   useEffect(() => {
+    setAvailableUsers(StorageService.getUsers());
     setArticles(StorageService.getArticles());
     setBulletinPosts(StorageService.getPosts());
     setQuestions(StorageService.getQuestions());
@@ -147,6 +159,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(`Sesión cambiada a: ${user.name}`);
   };
 
+  const registerParticipant = (data: {
+    name: string;
+    locality: string;
+    email?: string;
+    phone?: string;
+    bio?: string;
+  }) => {
+    const res = StorageService.registerUser(data);
+    setAvailableUsers(res.updatedUsers);
+    setAttendanceSessions(res.updatedAttendance);
+    setActiveUserState(res.user);
+    showToast(`¡Bienvenido al Proseminario, ${res.user.name}! Ya figuras en la lista de asistencia.`);
+  };
+
   // Attendance actions
   const updateAttendance = (sessionId: string, userId: string, status: AttendanceStatus, note?: string) => {
     const updated = StorageService.updateUserAttendance(sessionId, userId, status, note);
@@ -160,7 +186,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       title,
       date,
       type,
-      records: SEED_USERS.map(u => ({ userId: u.id, status: 'presente' }))
+      records: availableUsers.map(u => ({ userId: u.id, status: 'presente' }))
     };
     const updated = StorageService.addAttendanceSession(newSession);
     setAttendanceSessions(updated);
@@ -179,7 +205,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast('¡Aporte registrado! Muchas gracias por el apoyo al viaje');
   };
 
-  // Classes Calendar action
+  // Classes Calendar actions
   const addClass = (clsData: Omit<ProseminarClass, 'id'>) => {
     const newCls: ProseminarClass = {
       ...clsData,
@@ -188,6 +214,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const updated = StorageService.addClass(newCls);
     setClasses(updated);
     showToast('Nueva clase agregada al calendario');
+  };
+
+  const updateClassNote = (classId: string, note: string) => {
+    const updated = StorageService.updateClassNote(classId, note);
+    setClasses(updated);
+    showToast('Nota de clase guardada correctamente');
+  };
+
+  // Articles & Priest Letters
+  const addArticle = (data: Omit<PriestArticle, 'id' | 'likes' | 'date'>) => {
+    const newArt: PriestArticle = {
+      ...data,
+      id: `art_${Date.now()}`,
+      date: new Date().toISOString().split('T')[0],
+      likes: 1
+    };
+    const updated = StorageService.addArticle(newArt);
+    setArticles(updated);
+    showToast('Carta pastoral publicada con éxito');
   };
 
   const likeArticle = (id: string) => {
@@ -251,6 +296,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const updated = StorageService.updateBookStatus(bookId, status);
     setBooks(updated);
     showToast('Estado de lectura actualizado');
+  };
+
+  const addBook = (data: Omit<BookResource, 'id'>) => {
+    const newBook: BookResource = {
+      ...data,
+      id: `book_${Date.now()}`
+    };
+    const updated = StorageService.addBook(newBook);
+    setBooks(updated);
+    showToast('Nuevo texto de estudio incorporado a la bibliografía');
   };
 
   const addSummary = (data: {
@@ -317,11 +372,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setActiveTab,
         activeUser,
         setActiveUser,
-        availableUsers: SEED_USERS,
+        availableUsers,
+        registerParticipant,
+        isPriest,
+        isAuthModalOpen,
+        setIsAuthModalOpen,
         liturgicalInfo,
         immersionTrip,
         classes,
         addClass,
+        updateClassNote,
         attendanceSessions,
         updateAttendance,
         addAttendanceSession,
@@ -329,6 +389,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         addDonation,
         articles,
         likeArticle,
+        addArticle,
         bulletinPosts,
         addBulletinPost,
         questions,
@@ -337,6 +398,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         upvoteAnswer,
         books,
         updateBookStatus,
+        addBook,
         summaries,
         addSummary,
         likeSummary,

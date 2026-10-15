@@ -11,7 +11,8 @@ import {
   ImmersionTrip,
   AttendanceStatus,
   ContributionDonation,
-  ProseminarClass
+  ProseminarClass,
+  UserRole
 } from '../types';
 import { 
   SEED_PRIEST_ARTICLES, 
@@ -39,6 +40,7 @@ const KEYS = {
   FUNDRAISER: 'proseminario_fundraiser_v1',
   TRIP: 'proseminario_trip_v1',
   CLASSES: 'proseminario_classes_v1',
+  USERS: 'proseminario_users_v1',
 };
 
 function getFromStorage<T>(key: string, defaultValue: T): T {
@@ -78,6 +80,11 @@ export const StorageService = {
     });
     this.saveArticles(updated);
     return updated;
+  },
+  addArticle(article: PriestArticle): PriestArticle[] {
+    const articles = [article, ...this.getArticles()];
+    this.saveArticles(articles);
+    return articles;
   },
 
   // Bulletin Posts (Cartelera)
@@ -143,6 +150,11 @@ export const StorageService = {
     const updated = books.map(b => b.id === bookId ? { ...b, readingStatus: status } : b);
     this.saveBooks(updated);
     return updated;
+  },
+  addBook(book: BookResource): BookResource[] {
+    const books = [book, ...this.getBooks()];
+    this.saveBooks(books);
+    return books;
   },
 
   // Study Summaries
@@ -255,10 +267,90 @@ export const StorageService = {
     this.saveClasses(classes);
     return classes;
   },
+  updateClassNote(classId: string, note: string): ProseminarClass[] {
+    const classes = this.getClasses();
+    const updated = classes.map(c => {
+      if (c.id === classId) {
+        return { ...c, summaryNote: note };
+      }
+      return c;
+    });
+    this.saveClasses(updated);
+    return updated;
+  },
+
+  // Users Directory & Participant Registration
+  getUsers(): UserProfile[] {
+    return getFromStorage(KEYS.USERS, SEED_USERS);
+  },
+  saveUsers(users: UserProfile[]) {
+    setToStorage(KEYS.USERS, users);
+  },
+  registerUser(userData: {
+    name: string;
+    locality: string;
+    email?: string;
+    phone?: string;
+    bio?: string;
+    role?: UserRole;
+  }): { user: UserProfile; updatedUsers: UserProfile[]; updatedAttendance: AttendanceSession[] } {
+    const users = this.getUsers();
+    const id = `user_part_${Date.now()}`;
+    const avatarList = [
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+      'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80'
+    ];
+    const avatar = avatarList[users.length % avatarList.length];
+
+    const newUser: UserProfile = {
+      id,
+      name: userData.name,
+      role: userData.role || 'estudiante',
+      avatar,
+      locality: userData.locality || 'Comunidad Local',
+      generation: 'Proseminario 2026/2027',
+      email: userData.email,
+      phone: userData.phone,
+      bio: userData.bio || 'Participante inscripto en el Proseminario Aquí y Ahora'
+    };
+    
+    const updatedUsers = [...users, newUser];
+    this.saveUsers(updatedUsers);
+
+    // Auto-add new participant to existing attendance sessions so they appear immediately
+    const sessions = this.getAttendanceSessions();
+    const updatedAttendance = sessions.map(s => {
+      const alreadyHas = s.records.some(r => r.userId === newUser.id);
+      if (!alreadyHas) {
+        return {
+          ...s,
+          records: [...s.records, { userId: newUser.id, status: 'presente' as AttendanceStatus }]
+        };
+      }
+      return s;
+    });
+    this.saveAttendanceSessions(updatedAttendance);
+
+    // Set as active user
+    this.setActiveUser(newUser);
+
+    return { user: newUser, updatedUsers, updatedAttendance };
+  },
 
   // Active User Profile
   getActiveUser(): UserProfile {
-    return getFromStorage(KEYS.ACTIVE_USER, SEED_USERS[3]); // Default to Ramiro
+    const users = this.getUsers();
+    const saved = getFromStorage<UserProfile | null>(KEYS.ACTIVE_USER, null);
+    if (saved) {
+      const match = users.find(u => u.id === saved.id);
+      if (match) return match;
+    }
+    // Default to Ramiro or first student
+    return users.find(u => u.role === 'estudiante') || users[0] || SEED_USERS[3];
   },
   setActiveUser(user: UserProfile) {
     setToStorage(KEYS.ACTIVE_USER, user);
@@ -277,5 +369,6 @@ export const StorageService = {
     localStorage.removeItem(KEYS.FUNDRAISER);
     localStorage.removeItem(KEYS.TRIP);
     localStorage.removeItem(KEYS.CLASSES);
+    localStorage.removeItem(KEYS.USERS);
   }
 };

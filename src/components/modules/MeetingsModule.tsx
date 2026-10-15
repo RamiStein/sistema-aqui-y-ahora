@@ -12,12 +12,13 @@ import {
   Radio, 
   Check, 
   ExternalLink,
-  MessageSquare
+  MessageSquare,
+  ShieldCheck
 } from 'lucide-react';
 import { Modal } from '../common/Modal';
 
 export const MeetingsModule: React.FC = () => {
-  const { meetings, addMeeting, joinMeeting, activeUser, showToast } = useApp();
+  const { meetings, addMeeting, joinMeeting, activeUser, isPriest, showToast } = useApp();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   // Form states
@@ -103,24 +104,31 @@ export const MeetingsModule: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={handleLaunchInstantRoom}
-            className="px-3.5 py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 transition-colors"
-            title="Abrir una sala de video al instante"
-          >
-            <Radio className="w-4 h-4 text-amber-800" />
-            <span>Abrir Sala Inmediata</span>
-          </button>
+        {isPriest ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={handleLaunchInstantRoom}
+              className="px-3.5 py-2.5 bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 transition-colors"
+              title="Abrir una sala de video al instante"
+            >
+              <Radio className="w-4 h-4 text-amber-800" />
+              <span>Abrir Sala Inmediata</span>
+            </button>
 
-          <button
-            onClick={() => setIsCreateModalOpen(true)}
-            className="px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Organizar Encuentro</span>
-          </button>
-        </div>
+            <button
+              onClick={() => setIsCreateModalOpen(true)}
+              className="px-4 py-2.5 bg-amber-800 hover:bg-amber-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 shadow-xs transition-colors shrink-0"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Organizar Encuentro (Gestor)</span>
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-600">
+            <ShieldCheck className="w-4 h-4 text-amber-700" />
+            <span>Salas organizadas por los Sacerdotes Tutores</span>
+          </div>
+        )}
       </div>
 
       {/* Notice box about Jitsi integration */}

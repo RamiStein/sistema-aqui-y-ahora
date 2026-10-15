@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Search, Flame, ChevronDown, Menu, X, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
-import { UserSwitcherModal } from '../common/UserSwitcherModal';
+import { Search, Flame, ChevronDown, Menu, X, ShieldCheck, Sparkles, BookOpen, UserPlus } from 'lucide-react';
+import { AuthModal } from '../common/AuthModal';
 
 interface HeaderProps {
   onToggleMobileNav: () => void;
@@ -9,8 +9,15 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onToggleMobileNav, isMobileNavOpen }) => {
-  const { activeUser, liturgicalInfo, setIsSearchModalOpen, setActiveTab } = useApp();
-  const [isUserSwitcherOpen, setIsUserSwitcherOpen] = useState(false);
+  const { 
+    activeUser, 
+    isPriest,
+    liturgicalInfo, 
+    setIsSearchModalOpen, 
+    setActiveTab,
+    isAuthModalOpen,
+    setIsAuthModalOpen 
+  } = useApp();
 
   return (
     <>
@@ -38,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileNav, isMobileNavOp
               </div>
             </div>
 
-            {/* Right: Actions, Liturgical badge, Search & Profile */}
+            {/* Right: Actions, Liturgical badge, Search, Inscription & Profile */}
             <div className="flex items-center space-x-2 sm:space-x-3">
               {/* Liturgical season micro-pill */}
               <div 
@@ -66,28 +73,44 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileNav, isMobileNavOp
                 <kbd className="hidden lg:inline text-[10px] bg-white border border-stone-300 text-stone-400 px-1.5 py-0.5 rounded font-mono">⌘K</kbd>
               </button>
 
+              {/* Quick Inscription button for participants */}
+              <button
+                onClick={() => setIsAuthModalOpen(true)}
+                className="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-amber-800 hover:bg-amber-900 text-white shadow-xs transition-colors shrink-0"
+                title="Inscribirme en el Proseminario y figurar en la lista de asistencia"
+              >
+                <UserPlus className="w-3.5 h-3.5" />
+                <span>Inscribirme / Ingresar</span>
+              </button>
+
               {/* Active User Switcher Pill */}
               <button
-                onClick={() => setIsUserSwitcherOpen(true)}
-                className="flex items-center space-x-2 p-1 sm:px-2.5 sm:py-1.5 rounded-xl border border-stone-200 bg-white hover:border-amber-300 hover:bg-amber-50/40 transition-all text-left"
-                title="Cambiar usuario activo o rol"
+                onClick={() => setIsAuthModalOpen(true)}
+                className={`flex items-center space-x-2 p-1 sm:px-2.5 sm:py-1.5 rounded-xl border transition-all text-left ${
+                  isPriest 
+                    ? 'border-amber-400 bg-amber-50/70 hover:bg-amber-100/60' 
+                    : 'border-stone-200 bg-white hover:border-amber-300 hover:bg-amber-50/40'
+                }`}
+                title="Cambiar usuario o acceder como gestor"
               >
                 <img
                   src={activeUser.avatar}
                   alt={activeUser.name}
-                  className="w-8 h-8 rounded-full object-cover border border-stone-200"
+                  className={`w-8 h-8 rounded-full object-cover border ${
+                    isPriest ? 'border-amber-400 ring-2 ring-amber-300/60' : 'border-stone-200'
+                  }`}
                 />
                 <div className="hidden sm:block">
                   <div className="flex items-center space-x-1">
                     <span className="text-xs font-semibold text-stone-800 leading-tight">
                       {activeUser.name}
                     </span>
-                    {activeUser.role === 'sacerdote' && <ShieldCheck className="w-3.5 h-3.5 text-amber-700" />}
+                    {isPriest && <ShieldCheck className="w-3.5 h-3.5 text-amber-700" />}
                     {activeUser.role === 'coordinador' && <Sparkles className="w-3.5 h-3.5 text-blue-600" />}
                     {activeUser.role === 'estudiante' && <BookOpen className="w-3.5 h-3.5 text-stone-500" />}
                   </div>
-                  <span className="text-[10px] text-stone-500 capitalize block leading-tight">
-                    {activeUser.role}
+                  <span className="text-[10px] text-stone-500 capitalize block leading-tight flex items-center space-x-1">
+                    <span>{isPriest ? 'Sacerdote Gestor' : activeUser.role}</span>
                   </span>
                 </div>
                 <ChevronDown className="w-3.5 h-3.5 text-stone-400 hidden sm:block" />
@@ -106,10 +129,10 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileNav, isMobileNavOp
         </div>
       </header>
 
-      {/* User Switcher Modal */}
-      <UserSwitcherModal
-        isOpen={isUserSwitcherOpen}
-        onClose={() => setIsUserSwitcherOpen(false)}
+      {/* Auth and Participant Inscription Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
       />
     </>
   );
