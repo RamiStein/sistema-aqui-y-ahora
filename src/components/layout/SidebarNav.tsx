@@ -154,7 +154,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ onItemClick }) => {
           Granja Épicos
         </h4>
         <p className="text-[11px] text-stone-300 mt-0.5">
-          1 al 11 de Enero • Exaltación de la Cruz, Bs. As.
+          11 al 20 de Enero • Exaltación de la Cruz, Bs. As.
         </p>
         <div className="mt-2 text-[10px] text-amber-300 font-semibold flex items-center justify-between border-t border-white/10 pt-2">
           <span>Ver mapa y programa</span>

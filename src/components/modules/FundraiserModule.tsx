@@ -80,7 +80,7 @@ export const FundraiserModule: React.FC = () => {
             Recaudación Solidaria: Inmersión Granja Épicos
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-2 max-w-2xl font-light leading-relaxed">
-            Un fondo transparente para cubrir el alojamiento, la alimentación biodinámica y el soporte de traslado para que los estudiantes de todo el país puedan asistir al retiro del 1 al 11 de Enero.
+            Un fondo transparente para cubrir el alojamiento, la alimentación biodinámica y el soporte de traslado para que los estudiantes de todo el país puedan asistir al retiro del 11 al 20 de Enero.
           </p>
         </div>
 
@@ -340,7 +340,7 @@ export const FundraiserModule: React.FC = () => {
 
           <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-stone-200 text-xs text-stone-700 font-serif leading-relaxed">
             <span className="font-bold text-stone-900 block mb-1">Sobre este video:</span>
-            Los sacerdotes tutores (Pbro. Esteban Morales y Pbra. Helena Von Berg) explican la trascendencia de la convivencia en la tierra y el Acto de Consagración diario para templar el alma en el camino sacerdotal antroposófico.
+            Los sacerdotes coordinadores y consejeros (Telma, Luis, Nicolás, Pablo y Viviane) explican la trascendencia de la convivencia en la tierra y el Acto de Consagración diario para templar el alma en el camino sacerdotal antroposófico.
           </div>
 
           <div className="flex justify-end pt-2">

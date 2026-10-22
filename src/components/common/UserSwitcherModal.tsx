@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from './Modal';
 import { useApp } from '../../context/AppContext';
 import { Check, ShieldCheck, BookOpen, Sparkles, User } from 'lucide-react';
-import { UserRole } from '../../types';
+import { UserRole, UserProfile } from '../../types';
 
 interface UserSwitcherModalProps {
   isOpen: boolean;
@@ -12,25 +12,26 @@ interface UserSwitcherModalProps {
 export const UserSwitcherModal: React.FC<UserSwitcherModalProps> = ({ isOpen, onClose }) => {
   const { availableUsers, activeUser, setActiveUser } = useApp();
 
-  const getRoleBadge = (role: UserRole) => {
-    switch (role) {
+  const getRoleBadge = (user: UserProfile) => {
+    switch (user.role) {
       case 'sacerdote':
         return (
           <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-900 border border-amber-300">
-            <ShieldCheck className="w-3 h-3 mr-1 text-amber-700" /> Sacerdote
+            <ShieldCheck className="w-3 h-3 mr-1 text-amber-700" />
+            {user.priestRole === 'coordinador' ? 'Sacerdote Coord.' : user.priestRole === 'consejero' ? 'Sacerdote Cons.' : 'Sacerdote'}
           </span>
         );
       case 'coordinador':
         return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-900 border border-blue-200">
-            <Sparkles className="w-3 h-3 mr-1 text-blue-600" /> Coordinador
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-900 border border-emerald-200">
+            <Sparkles className="w-3 h-3 mr-1 text-emerald-700" /> Responsable
           </span>
         );
       case 'estudiante':
       default:
         return (
           <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-stone-100 text-stone-700 border border-stone-300">
-            <BookOpen className="w-3 h-3 mr-1 text-stone-500" /> Estudiante
+            <BookOpen className="w-3 h-3 mr-1 text-stone-500" /> Integrante
           </span>
         );
     }
@@ -76,7 +77,7 @@ export const UserSwitcherModal: React.FC<UserSwitcherModalProps> = ({ isOpen, on
                 <div>
                   <div className="flex items-center space-x-2">
                     <span className="font-semibold text-stone-900 text-sm">{u.name}</span>
-                    {getRoleBadge(u.role)}
+                    {getRoleBadge(u)}
                   </div>
                   <p className="text-xs text-stone-500 mt-0.5">{u.locality} • {u.generation}</p>
                   {u.bio && <p className="text-[11px] text-stone-600 italic mt-1 line-clamp-1">{u.bio}</p>}

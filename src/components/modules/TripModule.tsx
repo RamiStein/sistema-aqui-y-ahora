@@ -199,7 +199,7 @@ export const TripModule: React.FC = () => {
             <span>Ritmo Diario en la Granja</span>
           </div>
           <h3 className="text-2xl font-bold font-serif-sacred text-stone-900">
-            La Jornada de Inmersión (1 al 11 de Enero)
+            La Jornada de Inmersión ({immersionTrip.datesText})
           </h3>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
             La vida en el seminario se fundamenta en un ritmo sano que equilibra la elevación del alma en el culto matutino, la actividad corporal en el compost y huerta biodinámica, y el estudio concentrado de la palabra.
@@ -234,7 +234,7 @@ export const TripModule: React.FC = () => {
       <div className="bg-white rounded-3xl border border-stone-200 p-6 sm:p-8 shadow-xs space-y-4">
         <div className="flex items-center space-x-2 text-xs font-bold text-stone-800 uppercase tracking-wider">
           <Backpack className="w-4 h-4 text-amber-700" />
-          <span>Equipaje Recomendado para los 11 Días</span>
+          <span>Equipaje Recomendado para la Convivencia ({immersionTrip.datesText})</span>
         </div>
         <p className="text-xs text-stone-500">
           Recomendaciones esenciales para el trabajo de campo y la vida en la granja:

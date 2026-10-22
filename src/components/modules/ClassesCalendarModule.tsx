@@ -48,7 +48,7 @@ export const ClassesCalendarModule: React.FC = () => {
   const [date, setDate] = useState('2026-11-15');
   const [time, setTime] = useState('10:00');
   const [durationMinutes, setDurationMinutes] = useState(90);
-  const [assignedPriestId, setAssignedPriestId] = useState('user_priest_esteban');
+  const [assignedPriestId, setAssignedPriestId] = useState('user_priest_telma');
   const [status, setStatus] = useState<ProseminarClass['status']>('proxima');
   const [syllabusText, setSyllabusText] = useState('');
   const [requiredReading, setRequiredReading] = useState('');

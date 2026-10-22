@@ -6,10 +6,11 @@ export interface UserProfile {
   role: UserRole;
   avatar: string;
   locality: string;
-  generation: string; // e.g. "Cohorte 2026", "Comunidad Buenos Aires", etc.
+  generation: string; // e.g. "Cohorte 2026", "Sacerdote Coordinador", etc.
   bio?: string;
   phone?: string;
   email?: string;
+  priestRole?: 'coordinador' | 'consejero';
 }
 
 export type LiturgicalSeason = 
@@ -200,7 +201,7 @@ export interface FundraiserCampaign {
 // 3. Viaje de Inmersión (Granja Épicos, Exaltación de la Cruz)
 export interface ImmersionTrip {
   title: string;
-  datesText: string; // "1 al 11 de Enero"
+  datesText: string; // "11 al 20 de Enero"
   startDate: string;
   endDate: string;
   locationName: string; // "Granja Épicos"

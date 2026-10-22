@@ -29,18 +29,18 @@ import {
 } from '../data/seedData';
 
 const KEYS = {
-  ARTICLES: 'proseminario_articles_v1',
-  POSTS: 'proseminario_bulletin_v2',
-  QUESTIONS: 'proseminario_questions_v2',
+  ARTICLES: 'proseminario_articles_v2',
+  POSTS: 'proseminario_bulletin_v3',
+  QUESTIONS: 'proseminario_questions_v3',
   BOOKS: 'proseminario_books_v1',
-  SUMMARIES: 'proseminario_summaries_v2',
-  MEETINGS: 'proseminario_meetings_v2',
-  ACTIVE_USER: 'proseminario_active_user_v2',
-  ATTENDANCE: 'proseminario_attendance_v2',
-  FUNDRAISER: 'proseminario_fundraiser_v1',
-  TRIP: 'proseminario_trip_v1',
-  CLASSES: 'proseminario_classes_v1',
-  USERS: 'proseminario_users_v2',
+  SUMMARIES: 'proseminario_summaries_v3',
+  MEETINGS: 'proseminario_meetings_v3',
+  ACTIVE_USER: 'proseminario_active_user_v3',
+  ATTENDANCE: 'proseminario_attendance_v3',
+  FUNDRAISER: 'proseminario_fundraiser_v2',
+  TRIP: 'proseminario_trip_v2',
+  CLASSES: 'proseminario_classes_v2',
+  USERS: 'proseminario_users_v3',
 };
 
 function getFromStorage<T>(key: string, defaultValue: T): T {

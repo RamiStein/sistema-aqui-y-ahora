@@ -313,7 +313,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <span>Acceso de Gestor Sacerdotal</span>
               </div>
               <p className="text-xs text-stone-300 leading-relaxed font-light">
-                Los sacerdotes tutores tienen permisos exclusivos para:
+                Los sacerdotes gestores (coordinadores y consejeros) tienen permisos exclusivos para:
               </p>
               <ul className="text-xs text-amber-200/90 space-y-1 list-disc list-inside">
                 <li><strong>Redactar Cartas Pastorales:</strong> Publicar artículos y noticias formativas.</li>
@@ -325,7 +325,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
             <div className="space-y-2.5">
               <span className="text-xs font-semibold text-stone-700 block">
-                Selecciona tu perfil de Sacerdote Tutor:
+                Selecciona tu perfil de Sacerdote (Coordinador o Consejero):
               </span>
               {priests.map((priest) => {
                 const isSelected = priest.id === activeUser.id;
@@ -359,7 +359,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                         <div className="flex items-center space-x-2">
                           <span className="font-bold text-stone-900 text-sm font-serif">{priest.name}</span>
                           <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
-                            Sacerdote Tutor
+                            {priest.priestRole === 'coordinador' ? 'Sacerdote Coordinador' : priest.priestRole === 'consejero' ? 'Sacerdote Consejero' : 'Sacerdote'}
                           </span>
                         </div>
                         <p className="text-xs text-stone-500 mt-0.5">{priest.locality}</p>

@@ -286,7 +286,7 @@ export const CalendarModule: React.FC = () => {
           <div className="bg-amber-50/60 border border-amber-200 rounded-2xl p-4 text-xs text-stone-800 space-y-1.5 font-serif">
             <span className="font-bold text-amber-950 block">¿Cómo dar el paso siguiente?</span>
             <p>
-              Durante el proseminario, mantendrás coloquios individuales de acompañamiento con los sacerdotes tutores (Pbro. Esteban Morales y Pbra. Helena Von Berg) para discernir conjuntamente el momento oportuno de postulación al seminario formal europeo.
+              Durante el proseminario, mantendrás coloquios individuales de acompañamiento con el equipo sacerdotal (Telma, Luis, Nicolás como coordinadores; Pablo y Viviane como consejeros) para discernir conjuntamente el momento oportuno de postulación al seminario formal europeo.
             </p>
           </div>
         </div>

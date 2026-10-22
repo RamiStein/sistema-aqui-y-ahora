@@ -306,11 +306,16 @@ export const AttendanceModule: React.FC = () => {
                           </span>
                           {user.role === 'sacerdote' ? (
                             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-900 border border-amber-300">
-                              <ShieldCheck className="w-3 h-3 mr-0.5 text-amber-700" /> Sacerdote
+                              <ShieldCheck className="w-3 h-3 mr-0.5 text-amber-700" />
+                              {user.priestRole === 'coordinador' ? 'Sacerdote Coordinador' : user.priestRole === 'consejero' ? 'Sacerdote Consejero' : 'Sacerdote'}
+                            </span>
+                          ) : user.role === 'coordinador' ? (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-900 border border-emerald-300">
+                              <Sparkles className="w-3 h-3 mr-0.5 text-emerald-700" /> Responsable
                             </span>
                           ) : (
                             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-stone-100 text-stone-600">
-                              <BookOpen className="w-3 h-3 mr-0.5 text-stone-400" /> Estudiante
+                              <BookOpen className="w-3 h-3 mr-0.5 text-stone-400" /> Integrante
                             </span>
                           )}
                         </div>
@@ -374,63 +379,134 @@ export const AttendanceModule: React.FC = () => {
       {/* Subtab 2: Directorio de Integrantes y Sacerdotes */}
       {activeSubTab === 'directorio' && (
         <div className="space-y-8">
-          {/* Section 1: Sacerdotes Tutores */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2 text-stone-900 font-serif-sacred text-xl font-bold border-b border-stone-200 pb-2">
-              <ShieldCheck className="w-5 h-5 text-amber-700" />
-              <span>Sacerdotes de la Comunidad ({priests.length})</span>
+          {/* Section 1: Equipo Sacerdotal */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-2">
+              <div className="flex items-center space-x-2 text-stone-900 font-serif-sacred text-xl font-bold">
+                <ShieldCheck className="w-5 h-5 text-amber-700" />
+                <span>Equipo Sacerdotal ({priests.length})</span>
+              </div>
+              <span className="text-xs text-amber-900 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 font-medium">
+                3 Coordinadores • 2 Consejeros
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {priests.map(priest => (
-                <div
-                  key={priest.id}
-                  className="bg-white rounded-3xl border border-amber-300/80 p-5 shadow-xs bg-gradient-to-br from-white to-[#FAF6EE] flex flex-col justify-between space-y-4"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <img
-                        src={priest.avatar}
-                        alt={priest.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-amber-200 shadow-xs"
-                      />
-                      <div>
-                        <h4 className="font-serif-sacred font-bold text-stone-900 text-base leading-tight">
-                          {priest.name}
-                        </h4>
-                        <span className="text-[11px] text-amber-900 font-semibold block">
-                          {priest.generation}
-                        </span>
+            {/* Sub-grupo: Coordinadores */}
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2 text-xs font-bold text-amber-950 uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-amber-700"></span>
+                <span>Sacerdotes Coordinadores (Telma, Luis y Nicolás)</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {priests.filter(p => p.priestRole === 'coordinador').map(priest => (
+                  <div
+                    key={priest.id}
+                    className="bg-white rounded-3xl border border-amber-300/80 p-5 shadow-xs bg-gradient-to-br from-white to-[#FAF6EE] flex flex-col justify-between space-y-4"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <img
+                          src={priest.avatar}
+                          alt={priest.name}
+                          className="w-12 h-12 rounded-full object-cover border-2 border-amber-300 shadow-xs"
+                        />
+                        <div>
+                          <h4 className="font-serif-sacred font-bold text-stone-900 text-base leading-tight">
+                            {priest.name}
+                          </h4>
+                          <span className="inline-block mt-0.5 text-[10px] text-amber-900 bg-amber-100/90 font-bold px-2 py-0.5 rounded-full border border-amber-300/70">
+                            {priest.generation}
+                          </span>
+                        </div>
                       </div>
+
+                      <p className="text-xs text-stone-600 font-serif leading-relaxed line-clamp-3">
+                        {priest.bio}
+                      </p>
                     </div>
 
-                    <p className="text-xs text-stone-600 font-serif leading-relaxed line-clamp-3">
-                      {priest.bio}
-                    </p>
+                    <div className="pt-3 border-t border-amber-100 text-xs text-stone-600 space-y-1">
+                      {priest.locality && (
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="w-3.5 h-3.5 text-stone-400" />
+                          <span>{priest.locality}</span>
+                        </div>
+                      )}
+                      {priest.email && (
+                        <div className="flex items-center space-x-2 truncate">
+                          <Mail className="w-3.5 h-3.5 text-stone-400" />
+                          <span className="truncate">{priest.email}</span>
+                        </div>
+                      )}
+                      {priest.phone && (
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-3.5 h-3.5 text-stone-400" />
+                          <span>{priest.phone}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
+                ))}
+              </div>
+            </div>
 
-                  <div className="pt-3 border-t border-amber-100 text-xs text-stone-600 space-y-1">
-                    {priest.locality && (
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="w-3.5 h-3.5 text-stone-400" />
-                        <span>{priest.locality}</span>
+            {/* Sub-grupo: Consejeros */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center space-x-2 text-xs font-bold text-amber-950 uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+                <span>Sacerdotes Consejeros (Pablo y Viviane)</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {priests.filter(p => p.priestRole === 'consejero').map(priest => (
+                  <div
+                    key={priest.id}
+                    className="bg-white rounded-3xl border border-amber-200/90 p-5 shadow-xs bg-gradient-to-br from-white to-[#FBF8F3] flex flex-col justify-between space-y-4"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <img
+                          src={priest.avatar}
+                          alt={priest.name}
+                          className="w-12 h-12 rounded-full object-cover border-2 border-amber-200 shadow-xs"
+                        />
+                        <div>
+                          <h4 className="font-serif-sacred font-bold text-stone-900 text-base leading-tight">
+                            {priest.name}
+                          </h4>
+                          <span className="inline-block mt-0.5 text-[10px] text-stone-800 bg-amber-50 font-bold px-2 py-0.5 rounded-full border border-amber-200">
+                            {priest.generation}
+                          </span>
+                        </div>
                       </div>
-                    )}
-                    {priest.email && (
-                      <div className="flex items-center space-x-2 truncate">
-                        <Mail className="w-3.5 h-3.5 text-stone-400" />
-                        <span className="truncate">{priest.email}</span>
-                      </div>
-                    )}
-                    {priest.phone && (
-                      <div className="flex items-center space-x-2">
-                        <Phone className="w-3.5 h-3.5 text-stone-400" />
-                        <span>{priest.phone}</span>
-                      </div>
-                    )}
+
+                      <p className="text-xs text-stone-600 font-serif leading-relaxed line-clamp-3">
+                        {priest.bio}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-amber-100 text-xs text-stone-600 space-y-1">
+                      {priest.locality && (
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="w-3.5 h-3.5 text-stone-400" />
+                          <span>{priest.locality}</span>
+                        </div>
+                      )}
+                      {priest.email && (
+                        <div className="flex items-center space-x-2 truncate">
+                          <Mail className="w-3.5 h-3.5 text-stone-400" />
+                          <span className="truncate">{priest.email}</span>
+                        </div>
+                      )}
+                      {priest.phone && (
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-3.5 h-3.5 text-stone-400" />
+                          <span>{priest.phone}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 

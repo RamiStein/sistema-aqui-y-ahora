@@ -206,7 +206,7 @@ export const OverviewModule: React.FC = () => {
           </div>
           <h4 className="font-bold text-stone-800 text-sm font-serif">Granja Épicos</h4>
           <p className="text-[11px] text-stone-500 mt-0.5 line-clamp-2">
-            1 al 11 de Enero: Mapa, cronograma y preparativos.
+            11 al 20 de Enero: Mapa, cronograma y preparativos.
           </p>
         </div>
 

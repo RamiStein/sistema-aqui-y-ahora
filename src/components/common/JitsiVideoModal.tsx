@@ -14,8 +14,8 @@ export const JitsiVideoModal: React.FC<JitsiVideoModalProps> = ({ meeting, onClo
   const [activeTab, setActiveTab] = useState<'video' | 'notes'>('video');
   const [sessionNotes, setSessionNotes] = useState('');
   const [meetingChat, setMeetingChat] = useState<Array<{ sender: string; text: string; time: string }>>([
-    { sender: 'Pbro. Esteban Morales', text: '¡Bienvenidos todos! Iniciamos con 2 minutos de silencio interior.', time: '19:30' },
-    { sender: 'Clara Menéndez', text: 'Buenas tardes a todos, conectada desde Uruguay.', time: '19:32' }
+    { sender: 'Telma (Sacerdote Coordinadora)', text: '¡Bienvenidos todos! Iniciamos con 2 minutos de silencio interior.', time: '19:30' },
+    { sender: 'Flávia Fonseca', text: 'Buenas tardes a todos, conectada y con el texto listo.', time: '19:32' }
   ]);
   const [chatInput, setChatInput] = useState('');
 

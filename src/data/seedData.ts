@@ -26,200 +26,275 @@ export const CURRENT_LITURGICAL_INFO: LiturgicalInfo = {
   festivityDateRange: '29 de Septiembre – Inicio de Adviento'
 };
 
+// Sacerdotes Coordinadores
+export const USER_PRIEST_TELMA: UserProfile = {
+  id: 'user_priest_telma',
+  name: 'Telma',
+  role: 'sacerdote',
+  priestRole: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Sacerdote Coordinadora',
+  bio: 'Sacerdotisa de la Comunidad de Cristianos. Coordinadora del Proseminario.',
+  email: 'telma@comunidaddecristianos.org',
+  phone: '+54 11 4782-1190'
+};
+
+export const USER_PRIEST_LUIS: UserProfile = {
+  id: 'user_priest_luis',
+  name: 'Luis',
+  role: 'sacerdote',
+  priestRole: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Sacerdote Coordinador',
+  bio: 'Sacerdote de la Comunidad de Cristianos. Coordinador del Proseminario.',
+  email: 'luis@comunidaddecristianos.org',
+  phone: '+54 11 4552-8871'
+};
+
+export const USER_PRIEST_NICOLAS: UserProfile = {
+  id: 'user_priest_nicolas',
+  name: 'Nicolás',
+  role: 'sacerdote',
+  priestRole: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Sacerdote Coordinador',
+  bio: 'Sacerdote de la Comunidad de Cristianos. Coordinador del Proseminario.',
+  email: 'nicolas@comunidaddecristianos.org',
+  phone: '+54 11 4890-3344'
+};
+
+// Sacerdotes Consejeros
+export const USER_PRIEST_PABLO: UserProfile = {
+  id: 'user_priest_pablo',
+  name: 'Pablo',
+  role: 'sacerdote',
+  priestRole: 'consejero',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Sacerdote Consejero',
+  bio: 'Sacerdote de la Comunidad de Cristianos. Consejero del Proseminario.',
+  email: 'pablo@comunidaddecristianos.org',
+  phone: '+54 351 554-3211'
+};
+
+export const USER_PRIEST_VIVIANE: UserProfile = {
+  id: 'user_priest_viviane',
+  name: 'Viviane',
+  role: 'sacerdote',
+  priestRole: 'consejero',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Sacerdote Consejera',
+  bio: 'Sacerdotisa de la Comunidad de Cristianos. Consejera del Proseminario.',
+  email: 'viviane@comunidaddecristianos.org',
+  phone: '+54 11 4331-7722'
+};
+
+// Participantes Reales
+export const USER_RAMIRO: UserProfile = {
+  id: 'user_ramiro',
+  name: 'Ramiro (Tú)',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del proseminario. Profundizando en la cristología y el Acto de Consagración.',
+  email: 'ramiro@proseminario.org',
+  phone: '+54 11 6234-9988'
+};
+
+export const USER_CLAUDIA: UserProfile = {
+  id: 'user_claudia',
+  name: 'Claudia',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_DANIEL: UserProfile = {
+  id: 'user_daniel',
+  name: 'Daniel',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
+  locality: 'Córdoba, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_EMILIO: UserProfile = {
+  id: 'user_emilio',
+  name: 'Emilio',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_FERNANDO: UserProfile = {
+  id: 'user_fernando',
+  name: 'Fernando',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+  locality: 'Montevideo, Uruguay',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_FLAVIA: UserProfile = {
+  id: 'user_flavia',
+  name: 'Flávia Fonseca',
+  role: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Responsable de Seguimiento',
+  bio: 'Responsable de seguimiento de participantes y coordinación del Proseminario.',
+  email: 'flavia.fonseca@proseminario.org'
+};
+
+export const USER_GABRIELA: UserProfile = {
+  id: 'user_gabriela',
+  name: 'Gabriela',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
+  locality: 'Rosario, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_GUSTAVO: UserProfile = {
+  id: 'user_gustavo',
+  name: 'Gustavo',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+  locality: 'Mendoza, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_JOANA: UserProfile = {
+  id: 'user_joana',
+  name: 'Joana',
+  role: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Responsable de Seguimiento',
+  bio: 'Responsable de seguimiento de participantes y acompañamiento formativo.',
+  email: 'joana@proseminario.org'
+};
+
+export const USER_KARINA: UserProfile = {
+  id: 'user_karina',
+  name: 'Karina',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_LARA: UserProfile = {
+  id: 'user_lara',
+  name: 'Lara',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_LORE: UserProfile = {
+  id: 'user_lore',
+  name: 'Lore',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  locality: 'Córdoba, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_MERLIN: UserProfile = {
+  id: 'user_merlin',
+  name: 'Merlin',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80',
+  locality: 'Bariloche, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_PATRICIA: UserProfile = {
+  id: 'user_patricia',
+  name: 'Patrícia',
+  role: 'coordinador',
+  avatar: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=200&q=80',
+  locality: 'Comunidad de Cristianos',
+  generation: 'Responsable de Seguimiento',
+  bio: 'Responsable de seguimiento de participantes y coordinación del grupo.',
+  email: 'patricia@proseminario.org'
+};
+
+export const USER_ROBERTA: UserProfile = {
+  id: 'user_roberta',
+  name: 'Roberta',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_SEBASTIAN: UserProfile = {
+  id: 'user_sebastian',
+  name: 'Sebastian',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+  locality: 'Santiago, Chile',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
+export const USER_VALENTIN: UserProfile = {
+  id: 'user_valentin',
+  name: 'Valentin',
+  role: 'estudiante',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+  locality: 'Buenos Aires, Argentina',
+  generation: 'Proseminario 2026/2027',
+  bio: 'Participante del Proseminario de Cristianos.'
+};
+
 export const SEED_USERS: UserProfile[] = [
-  // Sacerdotes
-  {
-    id: 'user_priest_esteban',
-    name: 'Pbro. Esteban Morales',
-    role: 'sacerdote',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Buenos Aires',
-    generation: 'Sacerdote Tutor',
-    bio: 'Sacerdote de la Comunidad de Cristianos. Guía litúrgico y acompañante espiritual del Proseminario.',
-    email: 'esteban.morales@comunidaddecristianos.org',
-    phone: '+54 11 4782-1190'
-  },
-  {
-    id: 'user_priest_helena',
-    name: 'Pbra. Helena Von Berg',
-    role: 'sacerdote',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Córdoba / Santiago',
-    generation: 'Tutora Proseminario',
-    bio: 'Sacerdotisa y formadora. Guía en el estudio bíblico, euritmia y práctica meditativa.',
-    email: 'helena.vonberg@comunidaddecristianos.org',
-    phone: '+54 351 554-3211'
-  },
-  {
-    id: 'user_priest_martin',
-    name: 'Pbro. Martín Vignale',
-    role: 'sacerdote',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Buenos Aires',
-    generation: 'Sacerdote Asesor',
-    bio: 'Sacerdote de la comunidad, consejero en el proceso de discernimiento vocacional.',
-    email: 'martin.vignale@comunidaddecristianos.org',
-    phone: '+54 11 4552-8871'
-  },
-  // Integrantes y Responsables del Proseminario (Lista Oficial)
-  {
-    id: 'user_ramiro',
-    name: 'Ramiro (Tú)',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del proseminario. Profundizando en la cristología y el Acto de Consagración.',
-    email: 'ramiro@proseminario.org',
-    phone: '+54 11 6234-9988'
-  },
-  {
-    id: 'user_claudia',
-    name: 'Claudia',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_daniel',
-    name: 'Daniel',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
-    locality: 'Córdoba, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_emilio',
-    name: 'Emilio',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_fernando',
-    name: 'Fernando',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
-    locality: 'Montevideo, Uruguay',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_flavia',
-    name: 'Flávia Fonseca',
-    role: 'coordinador',
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Cristianos',
-    generation: 'Responsable de Seguimiento',
-    bio: 'Responsable de seguimiento de participantes y coordinación del Proseminario.',
-    email: 'flavia.fonseca@proseminario.org'
-  },
-  {
-    id: 'user_gabriela',
-    name: 'Gabriela',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
-    locality: 'Rosario, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_gustavo',
-    name: 'Gustavo',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
-    locality: 'Mendoza, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_joana',
-    name: 'Joana',
-    role: 'coordinador',
-    avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Cristianos',
-    generation: 'Responsable de Seguimiento',
-    bio: 'Responsable de seguimiento de participantes y acompañamiento formativo.',
-    email: 'joana@proseminario.org'
-  },
-  {
-    id: 'user_karina',
-    name: 'Karina',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_lara',
-    name: 'Lara',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_lore',
-    name: 'Lore',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    locality: 'Córdoba, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_merlin',
-    name: 'Merlin',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80',
-    locality: 'Bariloche, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_patricia',
-    name: 'Patrícia',
-    role: 'coordinador',
-    avatar: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=200&q=80',
-    locality: 'Comunidad de Cristianos',
-    generation: 'Responsable de Seguimiento',
-    bio: 'Responsable de seguimiento de participantes y coordinación del grupo.',
-    email: 'patricia@proseminario.org'
-  },
-  {
-    id: 'user_roberta',
-    name: 'Roberta',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_sebastian',
-    name: 'Sebastian',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    locality: 'Santiago, Chile',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  },
-  {
-    id: 'user_valentin',
-    name: 'Valentin',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    locality: 'Buenos Aires, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Participante del Proseminario de Cristianos.'
-  }
+  // Sacerdotes Coordinadores
+  USER_PRIEST_TELMA,
+  USER_PRIEST_LUIS,
+  USER_PRIEST_NICOLAS,
+  // Sacerdotes Consejeros
+  USER_PRIEST_PABLO,
+  USER_PRIEST_VIVIANE,
+  // Participantes Reales
+  USER_RAMIRO,
+  USER_CLAUDIA,
+  USER_DANIEL,
+  USER_EMILIO,
+  USER_FERNANDO,
+  USER_FLAVIA,
+  USER_GABRIELA,
+  USER_GUSTAVO,
+  USER_JOANA,
+  USER_KARINA,
+  USER_LARA,
+  USER_LORE,
+  USER_MERLIN,
+  USER_PATRICIA,
+  USER_ROBERTA,
+  USER_SEBASTIAN,
+  USER_VALENTIN
 ];
 
 export const SEED_PRIEST_ARTICLES: PriestArticle[] = [
@@ -227,9 +302,9 @@ export const SEED_PRIEST_ARTICLES: PriestArticle[] = [
     id: 'art_1',
     title: 'El Acto de Consagración del Hombre: La comunión del alma con el devenir de la Tierra',
     subtitle: 'Reflexión para el inicio del ciclo lectivo del Proseminario',
-    authorName: 'Pbro. Esteban Morales',
-    authorTitle: 'Sacerdote tutor del Proseminario',
-    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    authorName: 'Telma',
+    authorTitle: 'Sacerdote Coordinadora del Proseminario',
+    authorAvatar: USER_PRIEST_TELMA.avatar,
     date: '2026-09-20',
     category: 'pastoral',
     readingTimeMinutes: 7,
@@ -251,9 +326,9 @@ Que la bendición acompañe a cada uno en sus hogares.`
     id: 'art_2',
     title: 'Orientaciones sobre el Proceso de Discernimiento Vocacional',
     subtitle: '¿Qué significa prepararse para el Seminario Sacerdotal?',
-    authorName: 'Pbra. Helena Von Berg',
-    authorTitle: 'Formadora y Sacerdotisa',
-    authorAvatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+    authorName: 'Luis',
+    authorTitle: 'Sacerdote Coordinador del Proseminario',
+    authorAvatar: USER_PRIEST_LUIS.avatar,
     date: '2026-09-14',
     category: 'proseminario',
     readingTimeMinutes: 5,
@@ -273,9 +348,9 @@ Nuestros círculos semanales de conversación están abiertos para que traigan s
     id: 'art_3',
     title: 'Convocatoria al Retiro Presencial de Primavera / San Juan',
     subtitle: 'Fechas, programa preliminar y preparativos del encuentro conjunto',
-    authorName: 'Pbro. Esteban Morales',
-    authorTitle: 'Sacerdote tutor del Proseminario',
-    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    authorName: 'Nicolás',
+    authorTitle: 'Sacerdote Coordinador del Proseminario',
+    authorAvatar: USER_PRIEST_NICOLAS.avatar,
     date: '2026-09-08',
     category: 'sacramental',
     readingTimeMinutes: 4,
@@ -294,7 +369,7 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Coordinación de viajes y hospedaje para el Encuentro Presencial',
     content: 'Hola queridos amigos, para quienes viajamos desde Córdoba, Mendoza y el Litoral al encuentro presencial, estamos armando un grupo para compartir auto y coordinar traslados. También hay plazas en casas de familias amigas.',
     category: 'alojamiento_viaje',
-    author: SEED_USERS[8], // Flávia Fonseca (Responsable)
+    author: USER_FLAVIA,
     date: '2026-10-10',
     city: 'Córdoba / Buenos Aires',
     urgency: 'alta',
@@ -306,7 +381,7 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Círculo de oración y pensamiento matutino: Martes y Jueves 07:30 hs',
     content: 'Invitamos a los integrantes del proseminario a conectarse 15 minutos antes de iniciar la jornada laboral para meditar en silencio y sostener en pensamientos a los miembros de la comunidad que atraviesan procesos de salud.',
     category: 'oracion_pensamiento',
-    author: SEED_USERS[0], // Pbro. Esteban
+    author: USER_PRIEST_TELMA,
     date: '2026-10-08',
     city: 'Virtual (Abierto)',
     urgency: 'normal',
@@ -317,7 +392,7 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Búsqueda de ejemplares de "El Quinto Evangelio" (Editorial Antroposófica)',
     content: 'Si alguien tiene un ejemplar en papel repetido o disponible en préstamo para la biblioteca circulante del proseminario, por favor avísenme. Tenemos varios interesados en sumarse a la lectura física.',
     category: 'iniciativa',
-    author: SEED_USERS[3], // Ramiro
+    author: USER_RAMIRO,
     date: '2026-10-05',
     city: 'Buenos Aires',
     urgency: 'normal',
@@ -329,7 +404,7 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Grupo de estudio sobre los Evangelios en relación con el Habla y la Euritmia',
     content: 'Estamos conformando una pequeña iniciativa los sábados por la tarde para experimentar los versos del Evangelio según San Juan. Quienes deseen sumarse, sean muy bienvenidos.',
     category: 'encuentro',
-    author: SEED_USERS[11], // Joana (Responsable)
+    author: USER_JOANA,
     date: '2026-10-02',
     city: 'Rosario / Híbrido',
     urgency: 'normal',
@@ -345,14 +420,14 @@ export const SEED_QUESTIONS: QuestionPost[] = [
     content: 'Leyendo las primeras conferencias de Rudolf Steiner sobre los evangelios, noto que se hace hincapié en el acontecimiento del Gólgota no como un sacrificio para aplacar la ira divina, sino como una metamorfosis cósmica y vital para la Tierra. ¿Cómo se explica esto en relación con la liturgia de la Comunidad de Cristianos?',
     category: 'cristologia',
     tags: ['Cristología', 'Gólgota', 'Rudolf Steiner', 'Sacramentos'],
-    author: SEED_USERS[3], // Ramiro
+    author: USER_RAMIRO,
     date: '2026-10-05',
     resolved: true,
     views: 89,
     answers: [
       {
         id: 'ans_1',
-        author: SEED_USERS[0], // Pbro. Esteban Morales
+        author: USER_PRIEST_TELMA,
         isPriestVerified: true,
         date: '2026-10-06',
         upvotes: 14,
@@ -364,11 +439,11 @@ El Gólgota es el punto de inflexión del cosmos: la muerte física es superada 
       },
       {
         id: 'ans_2',
-        author: SEED_USERS[8], // Flávia Fonseca
+        author: USER_FLAVIA,
         isPriestVerified: false,
         date: '2026-10-06',
         upvotes: 5,
-        content: 'Muchas gracias por la respuesta tan clara padre. Recomiendo complementar esto con la lectura del capítulo 4 del libro de Friedrich Rittelmeyer "El Cristianismo como realidad viviente". Ayuda mucho a visualizarlo.'
+        content: 'Muchas gracias por la respuesta tan clara Telma. Recomiendo complementar esto con la lectura del capítulo 4 del libro de Friedrich Rittelmeyer "El Cristianismo como realidad viviente". Ayuda mucho a visualizarlo.'
       }
     ]
   },
@@ -378,14 +453,14 @@ El Gólgota es el punto de inflexión del cosmos: la muerte física es superada 
     content: 'Muchos de los que estamos en el proseminario tenemos ocupaciones laicas demandantes. A veces llego al final del día agotado y me cuesta concentrarme en los versos o en la retrospectiva (Rückschau). ¿Qué consejos prácticos tienen los sacerdotes y compañeros?',
     category: 'vida_interior',
     tags: ['Meditación', 'Ritmo Diario', 'Retrospectiva', 'Práctica Interior'],
-    author: SEED_USERS[4], // Claudia
+    author: USER_CLAUDIA,
     date: '2026-10-03',
     resolved: false,
     views: 64,
     answers: [
       {
         id: 'ans_3',
-        author: SEED_USERS[1], // Pbra. Helena
+        author: USER_PRIEST_LUIS,
         isPriestVerified: true,
         date: '2026-10-04',
         upvotes: 9,
@@ -404,14 +479,14 @@ Consejo práctico:
     content: 'Tengo la duda de si para ingresar posteriormente al Seminario Sacerdotal en Stuttgart o Hamburgo es excluyente dominar el alemán previamente o si se puede cursar con apoyo en español/inglés en las etapas iniciales.',
     category: 'organizacion_proseminario',
     tags: ['Seminario', 'Idiomas', 'Formación', 'Vocación'],
-    author: SEED_USERS[3], // Ramiro
+    author: USER_RAMIRO,
     date: '2026-09-28',
     resolved: true,
     views: 52,
     answers: [
       {
         id: 'ans_4',
-        author: SEED_USERS[11], // Joana (Responsable)
+        author: USER_JOANA,
         isPriestVerified: false,
         date: '2026-09-29',
         upvotes: 6,
@@ -496,7 +571,7 @@ export const SEED_STUDY_SUMMARIES: StudySummary[] = [
     id: 'sum_1',
     title: 'Síntesis: El Prólogo del Evangelio de Juan (Jn 1, 1-18) a la luz de la Antroposofía',
     theme: 'Cristología y Exégesis Espiritual',
-    author: SEED_USERS[0], // Ramiro
+    author: USER_RAMIRO,
     date: '2026-09-23',
     cycleModule: 'Módulo 2: Los Evangelios',
     relatedBookOrLecture: 'GA 112 - El Evangelio de San Juan',
@@ -526,7 +601,7 @@ Se sugiere a los integrantes del grupo tomar diariamente el versículo 4: *«En 
     id: 'sum_2',
     title: 'Esquema Comparativo: Las 4 Fases del Acto de Consagración del Hombre',
     theme: 'Liturgia Sacramental Renovada',
-    author: SEED_USERS[8], // Flávia Fonseca
+    author: USER_FLAVIA,
     date: '2026-10-09',
     cycleModule: 'Módulo 3: Vida Sacramental',
     relatedBookOrLecture: 'El Acto de Consagración del Hombre - F. Rittelmeyer',
@@ -564,7 +639,7 @@ Se sugiere a los integrantes del grupo tomar diariamente el versículo 4: *«En 
     id: 'sum_3',
     title: 'Apuntes de Clase: La metamorfosis del dolor en el camino del discipulado',
     theme: 'Autoeducación y Formación Interior',
-    author: SEED_USERS[13], // Patrícia
+    author: USER_PATRICIA,
     date: '2026-10-07',
     cycleModule: 'Módulo 1: Fundamentos',
     relatedBookOrLecture: 'Cómo se alcanza el conocimiento de los mundos superiores (GA 10)',
@@ -576,7 +651,7 @@ Se sugiere a los integrantes del grupo tomar diariamente el versículo 4: *«En 
       'El dolor vivido con dignidad ensancha la capacidad de compasión hacia los semejantes.',
       'El secreto sacerdotal consiste en no endurecerse ante la herida ajena.'
     ],
-    content: `## Notas del Taller impartido por la Pbra. Helena Von Berg:
+    content: `## Notas del Taller impartido por la Sacerdotisa Telma y Luis:
 - Rudolf Steiner advierte que el estudiante espiritual que busca el conocimiento superior sin cultivar paralelamente la bondad y la empatía cae en el riesgo del orgullo intelectual.
 - Cada paso adelante en el conocimiento debe estar precedido por tres pasos en el perfeccionamiento moral y en la abnegación cariñosa hacia los demás.
 - Ejercicio propuesto: reflexionar al final de la semana sobre un momento difícil y reconocer qué cualidad interior exigió desarrollar.`
@@ -588,7 +663,7 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_1',
     title: 'Círculo Semanal: Estudio del Evangelio de Juan (Capítulo 4: La Samaritana en el Pozo)',
     description: 'Lectura comentada versículo por versículo, intercambio de impresiones y vinculación con el agua viva del espíritu.',
-    host: SEED_USERS[0], // Pbro. Esteban
+    host: USER_PRIEST_TELMA,
     date: '2026-10-18',
     time: '19:30',
     durationMinutes: 75,
@@ -604,7 +679,7 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_2',
     title: 'Espacio Abierto de Dudas y Conversación Fraternal',
     description: 'Sala libre para conversar entre estudiantes sobre las lecturas de la semana, compartir dudas del seminario y coordinar tareas.',
-    host: SEED_USERS[3], // Ramiro
+    host: USER_RAMIRO,
     date: '2026-10-20',
     time: '18:00',
     durationMinutes: 60,
@@ -620,7 +695,7 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_3',
     title: 'Taller de Fonética y Formación del Habla Sacramental',
     description: 'Práctica guiada de respiración, dicción y escucha del sonido de las consonantes y vocales en las oraciones cúlticas.',
-    host: SEED_USERS[1], // Pbra. Helena
+    host: USER_PRIEST_LUIS,
     date: '2026-10-24',
     time: '17:00',
     durationMinutes: 90,
@@ -646,7 +721,7 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
       'Rudolf Steiner y Friedrich Rittelmeyer: El encuentro de dos caminos',
       'El pensar viviente frente al materialismo moderno'
     ],
-    assignedPriest: 'Pbro. Esteban Morales'
+    assignedPriest: 'Telma (Sacerdote Coordinadora)'
   },
   {
     id: 'mod_2',
@@ -659,7 +734,7 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
       'El Quinto Evangelio y los años preparatorios de Jesús de Nazaret',
       'El Acontecimiento del Gólgota como hecho central de la evolución terrestre'
     ],
-    assignedPriest: 'Pbra. Helena Von Berg'
+    assignedPriest: 'Luis (Sacerdote Coordinador)'
   },
   {
     id: 'mod_3',
@@ -672,7 +747,7 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
       'Los Siete Sacramentos en los umbrales de la biografía humana',
       'Las cuatro festividades cardinales: Micael, Navidad, Pascua y San Juan'
     ],
-    assignedPriest: 'Pbro. Esteban Morales'
+    assignedPriest: 'Nicolás (Sacerdote Coordinador)'
   },
   {
     id: 'mod_4',
@@ -685,7 +760,7 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
       'La palabra hablada como vehículo de fuerzas espirituales',
       'El discernimiento individual de la vocación y el servicio a la comunidad'
     ],
-    assignedPriest: 'Equipo de Sacerdotes y Tutores'
+    assignedPriest: 'Pablo y Viviane (Sacerdotes Consejeros)'
   }
 ];
 
@@ -713,9 +788,11 @@ export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
       { userId: 'user_roberta', status: 'presente' },
       { userId: 'user_sebastian', status: 'presente' },
       { userId: 'user_valentin', status: 'presente' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'presente' }
+      { userId: 'user_priest_telma', status: 'presente' },
+      { userId: 'user_priest_luis', status: 'presente' },
+      { userId: 'user_priest_nicolas', status: 'presente' },
+      { userId: 'user_priest_pablo', status: 'presente' },
+      { userId: 'user_priest_viviane', status: 'presente' }
     ]
   },
   {
@@ -741,9 +818,11 @@ export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
       { userId: 'user_roberta', status: 'ausente', note: 'No asistió' },
       { userId: 'user_sebastian', status: 'presente' },
       { userId: 'user_valentin', status: 'ausente', note: 'No asistió' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'presente' }
+      { userId: 'user_priest_telma', status: 'presente' },
+      { userId: 'user_priest_luis', status: 'presente' },
+      { userId: 'user_priest_nicolas', status: 'presente' },
+      { userId: 'user_priest_pablo', status: 'presente' },
+      { userId: 'user_priest_viviane', status: 'presente' }
     ]
   },
   {
@@ -769,9 +848,11 @@ export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
       { userId: 'user_roberta', status: 'presente' },
       { userId: 'user_sebastian', status: 'presente' },
       { userId: 'user_valentin', status: 'presente' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'presente' }
+      { userId: 'user_priest_telma', status: 'presente' },
+      { userId: 'user_priest_luis', status: 'presente' },
+      { userId: 'user_priest_nicolas', status: 'presente' },
+      { userId: 'user_priest_pablo', status: 'presente' },
+      { userId: 'user_priest_viviane', status: 'presente' }
     ]
   },
   {
@@ -797,9 +878,11 @@ export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
       { userId: 'user_roberta', status: 'presente' },
       { userId: 'user_sebastian', status: 'presente' },
       { userId: 'user_valentin', status: 'presente' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'presente' }
+      { userId: 'user_priest_telma', status: 'presente' },
+      { userId: 'user_priest_luis', status: 'presente' },
+      { userId: 'user_priest_nicolas', status: 'presente' },
+      { userId: 'user_priest_pablo', status: 'presente' },
+      { userId: 'user_priest_viviane', status: 'presente' }
     ]
   },
   {
@@ -825,9 +908,11 @@ export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
       { userId: 'user_roberta', status: 'presente' },
       { userId: 'user_sebastian', status: 'presente' },
       { userId: 'user_valentin', status: 'presente' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'presente' }
+      { userId: 'user_priest_telma', status: 'presente' },
+      { userId: 'user_priest_luis', status: 'presente' },
+      { userId: 'user_priest_nicolas', status: 'presente' },
+      { userId: 'user_priest_pablo', status: 'presente' },
+      { userId: 'user_priest_viviane', status: 'presente' }
     ]
   }
 ];
@@ -841,7 +926,7 @@ export const SEED_FUNDRAISER: FundraiserCampaign = {
   videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0', // Video embed / player
   videoThumbnail: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80',
   videoTitle: '¿Para qué necesitamos este dinero? La voz de los sacerdotes y estudiantes',
-  videoDescription: 'En este video de 3 minutos, los sacerdotes tutores y los integrantes del Proseminario comparten el sentido profundo del retiro de 11 días en la Granja Épicos y por qué la solidaridad comunitaria hace posible que nadie quede afuera por motivos económicos.',
+  videoDescription: 'En este video explicativo, los sacerdotes coordinadores (Telma, Luis, Nicolás), consejeros (Pablo, Viviane) y los integrantes del Proseminario comparten el sentido profundo del retiro de 10 días (11 al 20 de Enero) en la Granja Épicos y por qué la solidaridad comunitaria hace posible que nadie quede afuera por motivos económicos.',
   aliasCbu: 'proseminario.epicos',
   cbuNumber: '0000003100045892147852',
   titular: 'Asociación Civil Comunidad de Cristianos',
@@ -849,9 +934,9 @@ export const SEED_FUNDRAISER: FundraiserCampaign = {
   mercadoPagoLink: 'https://link.mercadopago.com.ar/proseminarioepicos',
   breakdown: [
     {
-      label: 'Hospedaje y Alimentación en Granja Épicos (11 días)',
+      label: 'Hospedaje y Alimentación en Granja Épicos (10 días: 11 al 20 de Enero)',
       amount: 1750000,
-      description: 'Alojamiento para 12 integrantes y sacerdotes, más cuatro comidas diarias elaboradas con ingredientes biodinámicos de la propia granja.'
+      description: 'Alojamiento para los 17 integrantes y el equipo sacerdotal, más cuatro comidas diarias elaboradas con ingredientes biodinámicos de la propia granja.'
     },
     {
       label: 'Fondo de Becas de Pasajes para Estudiantes del Interior',
@@ -906,21 +991,21 @@ export const SEED_FUNDRAISER: FundraiserCampaign = {
 
 export const SEED_IMMERSION_TRIP: ImmersionTrip = {
   title: 'Viaje de Inmersión Proseminario 2027',
-  datesText: '1 al 11 de Enero',
-  startDate: '2027-01-01',
-  endDate: '2027-01-11',
+  datesText: '11 al 20 de Enero',
+  startDate: '2027-01-11',
+  endDate: '2027-01-20',
   locationName: 'Granja Épicos',
   locationZone: 'Exaltación de la Cruz, Provincia de Buenos Aires',
   addressDetails: 'Ruta Provincial 39 y Camino a Parada Robles, Partido de Exaltación de la Cruz, Pcia. de Buenos Aires (a 80 km de Capital Federal)',
   // Google Maps embed centrado en Exaltación de la Cruz / Capilla del Señor
   mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52726.83687358245!2d-59.1558231!3d-34.2937746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb786016e3eb73%3A0xa19b48b6c4cfcb64!2sExaltaci%C3%B3n%20de%20la%20Cruz%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar',
   googleMapsLink: 'https://maps.google.com/?q=Exaltacion+de+la+Cruz+Buenos+Aires+Granja+Epicos',
-  description: 'Once días de inmersión total en la respiración de la naturaleza, el trabajo comunitario en la tierra biodinámica, la celebración diaria del Acto de Consagración del Hombre y el discernimiento de la vocación sacerdotal.',
+  description: 'Diez días de inmersión total en la respiración de la naturaleza, el trabajo comunitario en la tierra biodinámica, la celebración diaria del Acto de Consagración del Hombre y el discernimiento de la vocación sacerdotal.',
   objectives: [
     'Encuentro vivo con la sustancia de la Tierra: labores biodinámicas en los campos y huertas de Granja Épicos.',
-    'Ritmo sacramental cotidiano: celebración matutina del Acto de Consagración del Hombre en la capilla del predio.',
+    'Ritmo sacramental cotidiano: celebración diaria del Acto de Consagración del Hombre en la capilla del predio.',
     'Estudio profundo de los Evangelios, Cristología antroposófica y oratoria sagrada.',
-    'Coloquios individuales de discernimiento con los sacerdotes acompañantes.',
+    'Coloquios individuales de discernimiento con los sacerdotes coordinadores y consejeros.',
     'Convivencia fraterna real: cocina compartida, euritmia en la naturaleza y silencios conscientes.'
   ],
   dailyRhythm: [
@@ -943,8 +1028,8 @@ export const SEED_IMMERSION_TRIP: ImmersionTrip = {
     'Elementos de higiene personal biodegradables / ecológicos.',
     'Protector solar, repelente de insectos y botella de agua personal.'
   ],
-  coordinatorName: 'Matías Rinaldi (Coordinador Logístico)',
-  coordinatorContact: '+54 341 498-7712 • matias.rinaldi@proseminario.org'
+  coordinatorName: 'Telma, Luis y Nicolás (Coordinadores) • Pablo y Viviane (Consejeros)',
+  coordinatorContact: 'equipo.sacerdotes@proseminario.org'
 };
 
 export const SEED_CLASSES: ProseminarClass[] = [
@@ -957,7 +1042,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-09-20',
     time: '10:00',
     durationMinutes: 90,
-    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    assignedPriest: USER_PRIEST_TELMA,
     status: 'pasada',
     syllabus: [
       'La constitución cuatripartita: cuerpo físico, cuerpo etérico, cuerpo astral y la chispa del Yo espiritual.',
@@ -978,7 +1063,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-09-27',
     time: '10:00',
     durationMinutes: 90,
-    assignedPriest: SEED_USERS[1], // Pbra. Helena Von Berg
+    assignedPriest: USER_PRIEST_LUIS,
     status: 'pasada',
     syllabus: [
       'Las cuatro imágenes del cosmos: Mateo (Hombre), Marcos (León), Lucas (Toro/Becerro) y Juan (Águila).',
@@ -999,7 +1084,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-10-04',
     time: '10:30',
     durationMinutes: 105,
-    assignedPriest: SEED_USERS[2], // Pbro. Martín Vignale
+    assignedPriest: USER_PRIEST_NICOLAS,
     status: 'pasada',
     syllabus: [
       'Las cuatro respiraciones del altar: Proclama del Evangelio, Ofertorio, Transubstanciación y Comunión.',
@@ -1022,7 +1107,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-10-18',
     time: '10:00',
     durationMinutes: 90,
-    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    assignedPriest: USER_PRIEST_PABLO,
     status: 'proxima',
     syllabus: [
       'Las vivencias íntimas de Jesús de Nazaret entre los 12 y los 30 años según las investigaciones de Rudolf Steiner.',
@@ -1042,7 +1127,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-10-25',
     time: '10:00',
     durationMinutes: 100,
-    assignedPriest: SEED_USERS[1], // Pbra. Helena Von Berg
+    assignedPriest: USER_PRIEST_VIVIANE,
     status: 'proxima',
     syllabus: [
       'El Verbo creador en la laringe humana: cómo el sonido transforma la atmósfera etérica de una sala.',
@@ -1062,7 +1147,7 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-11-08',
     time: '10:30',
     durationMinutes: 90,
-    assignedPriest: SEED_USERS[0], // Pbro. Esteban Morales
+    assignedPriest: USER_PRIEST_TELMA,
     status: 'proxima',
     syllabus: [
       'Metamorfosis estacional del alma: el coraje micaélico que se repliega en la profundidad invernal/estival.',
@@ -1082,11 +1167,11 @@ export const SEED_CLASSES: ProseminarClass[] = [
     date: '2026-11-22',
     time: '10:00',
     durationMinutes: 120,
-    assignedPriest: SEED_USERS[2], // Pbro. Martín Vignale
+    assignedPriest: USER_PRIEST_LUIS,
     status: 'proxima',
     syllabus: [
       'Agricultura biodinámica y sacramento: la consagración del trabajo con la tierra en Granja Épicos.',
-      'El ritmo de los 11 días en Exaltación de la Cruz (1 al 11 de Enero): sentido de las vigilias y el oficio cotidiano.',
+      'El ritmo de los 10 días en Exaltación de la Cruz (11 al 20 de Enero): sentido de las vigilias y el oficio cotidiano.',
       'Coloquios individuales de discernimiento sacerdotal: qué esperar del encuentro personal con los sacerdotes.',
       'Organización de turnos de cocina, cuidado de capilla y labores comunitarias.'
     ],
