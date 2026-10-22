@@ -40,6 +40,13 @@ export const AttendanceModule: React.FC = () => {
   const [filterRole, setFilterRole] = useState<'todos' | 'sacerdotes' | 'estudiantes'>('todos');
   const [isNewSessionModalOpen, setIsNewSessionModalOpen] = useState(false);
 
+  // Ensure selectedSessionId is valid when attendanceSessions loads or updates
+  React.useEffect(() => {
+    if (attendanceSessions.length > 0 && (!selectedSessionId || !attendanceSessions.some(s => s.id === selectedSessionId))) {
+      setSelectedSessionId(attendanceSessions[0].id);
+    }
+  }, [attendanceSessions, selectedSessionId]);
+
   // New session modal state
   const [newSessionTitle, setNewSessionTitle] = useState('');
   const [newSessionDate, setNewSessionDate] = useState(new Date().toISOString().split('T')[0]);
@@ -111,13 +118,13 @@ export const AttendanceModule: React.FC = () => {
         <div>
           <div className="flex items-center space-x-2 text-amber-900 font-semibold text-xs tracking-wider uppercase mb-1">
             <Users className="w-4 h-4 text-amber-700" />
-            <span>Gestión del Grupo y Registro</span>
+            <span>Seguimiento de Participantes del Proseminario de Cristianos</span>
           </div>
           <h2 className="text-2xl font-bold font-serif-sacred text-stone-900">
             Comunidad y Registro de Asistencia
           </h2>
-          <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-            Control de asistencia interactivo para clases y talleres, junto al directorio completo de sacerdotes tutores e integrantes del Proseminario.
+          <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-2xl">
+            <strong>Responsables:</strong> Flávia Fonseca / Joana / Patricia • Control de asistencia de encuentros (Martes y Jueves) y directorio oficial.
           </p>
         </div>
 

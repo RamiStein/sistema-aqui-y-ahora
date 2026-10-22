@@ -61,83 +61,164 @@ export const SEED_USERS: UserProfile[] = [
     email: 'martin.vignale@comunidaddecristianos.org',
     phone: '+54 11 4552-8871'
   },
-  // Integrantes del Proseminario
+  // Integrantes y Responsables del Proseminario (Lista Oficial)
   {
     id: 'user_ramiro',
     name: 'Ramiro (Tú)',
     role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80',
     locality: 'Buenos Aires, Argentina',
     generation: 'Proseminario 2026/2027',
-    bio: 'Participante activo del proseminario. Profundizando en la cristología y el Acto de Consagración.',
+    bio: 'Participante del proseminario. Profundizando en la cristología y el Acto de Consagración.',
     email: 'ramiro@proseminario.org',
     phone: '+54 11 6234-9988'
   },
   {
-    id: 'user_clara',
-    name: 'Clara Menéndez',
+    id: 'user_claudia',
+    name: 'Claudia',
     role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
-    locality: 'Montevideo, Uruguay',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
     generation: 'Proseminario 2026/2027',
-    bio: 'Estudiante de euritmia y participante del ciclo preparatorio del seminario sacerdotal.',
-    email: 'clara.m@proseminario.org',
-    phone: '+598 99 123 456'
+    bio: 'Participante del Proseminario de Cristianos.'
   },
   {
-    id: 'user_matias',
-    name: 'Matías Rinaldi',
-    role: 'coordinador',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
-    locality: 'Rosario, Argentina',
-    generation: 'Coordinación Logística',
-    bio: 'Coordinador de los encuentros y responsable del viaje de inmersión en Granja Épicos.',
-    email: 'matias.rinaldi@proseminario.org',
-    phone: '+54 341 498-7712'
-  },
-  {
-    id: 'user_sofia',
-    name: 'Sofía Alvarado',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
-    locality: 'Mendoza, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Pedagoga Waldorf e interesada en la renovación religiosa y la pastoral sacramental.',
-    email: 'sofia.alvarado@proseminario.org',
-    phone: '+54 261 411-2390'
-  },
-  {
-    id: 'user_tomas',
-    name: 'Tomás Benítez',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
-    locality: 'Córdoba Capital, Argentina',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Estudiante de filosofía y participante del grupo de estudio del Evangelio de Juan.',
-    email: 'tomas.benitez@proseminario.org',
-    phone: '+54 351 688-4410'
-  },
-  {
-    id: 'user_lucia',
-    name: 'Lucía Rossi',
-    role: 'estudiante',
-    avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=200&q=80',
-    locality: 'Bariloche, Río Negro',
-    generation: 'Proseminario 2026/2027',
-    bio: 'Terapeuta artística y participante de los encuentros patagónicos de la comunidad.',
-    email: 'lucia.rossi@proseminario.org',
-    phone: '+54 294 455-8912'
-  },
-  {
-    id: 'user_ignacio',
-    name: 'Ignacio Fontana',
+    id: 'user_daniel',
+    name: 'Daniel',
     role: 'estudiante',
     avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80',
-    locality: 'La Plata, Buenos Aires',
+    locality: 'Córdoba, Argentina',
     generation: 'Proseminario 2026/2027',
-    bio: 'Agrónomo orientado a la agricultura biodinámica y estudiante del proseminario.',
-    email: 'ignacio.fontana@proseminario.org',
-    phone: '+54 221 533-0091'
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_emilio',
+    name: 'Emilio',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_fernando',
+    name: 'Fernando',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+    locality: 'Montevideo, Uruguay',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_flavia',
+    name: 'Flávia Fonseca',
+    role: 'coordinador',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+    locality: 'Comunidad de Cristianos',
+    generation: 'Responsable de Seguimiento',
+    bio: 'Responsable de seguimiento de participantes y coordinación del Proseminario.',
+    email: 'flavia.fonseca@proseminario.org'
+  },
+  {
+    id: 'user_gabriela',
+    name: 'Gabriela',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
+    locality: 'Rosario, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_gustavo',
+    name: 'Gustavo',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+    locality: 'Mendoza, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_joana',
+    name: 'Joana',
+    role: 'coordinador',
+    avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=200&q=80',
+    locality: 'Comunidad de Cristianos',
+    generation: 'Responsable de Seguimiento',
+    bio: 'Responsable de seguimiento de participantes y acompañamiento formativo.',
+    email: 'joana@proseminario.org'
+  },
+  {
+    id: 'user_karina',
+    name: 'Karina',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_lara',
+    name: 'Lara',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_lore',
+    name: 'Lore',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    locality: 'Córdoba, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_merlin',
+    name: 'Merlin',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80',
+    locality: 'Bariloche, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_patricia',
+    name: 'Patrícia',
+    role: 'coordinador',
+    avatar: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&w=200&q=80',
+    locality: 'Comunidad de Cristianos',
+    generation: 'Responsable de Seguimiento',
+    bio: 'Responsable de seguimiento de participantes y coordinación del grupo.',
+    email: 'patricia@proseminario.org'
+  },
+  {
+    id: 'user_roberta',
+    name: 'Roberta',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_sebastian',
+    name: 'Sebastian',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    locality: 'Santiago, Chile',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
+  },
+  {
+    id: 'user_valentin',
+    name: 'Valentin',
+    role: 'estudiante',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    locality: 'Buenos Aires, Argentina',
+    generation: 'Proseminario 2026/2027',
+    bio: 'Participante del Proseminario de Cristianos.'
   }
 ];
 
@@ -211,13 +292,13 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
   {
     id: 'post_1',
     title: 'Coordinación de viajes y hospedaje para el Encuentro Presencial',
-    content: 'Hola queridos amigos, para quienes viajamos desde Córdoba y el Litoral al encuentro en Buenos Aires, estamos armando un grupo para compartir auto o coordinar pasajes en tren. También la comunidad ofrece 4 plazas en casas de familias amigas.',
+    content: 'Hola queridos amigos, para quienes viajamos desde Córdoba, Mendoza y el Litoral al encuentro presencial, estamos armando un grupo para compartir auto y coordinar traslados. También hay plazas en casas de familias amigas.',
     category: 'alojamiento_viaje',
-    author: SEED_USERS[3], // Clara
-    date: '2026-09-22',
+    author: SEED_USERS[8], // Flávia Fonseca (Responsable)
+    date: '2026-10-10',
     city: 'Córdoba / Buenos Aires',
     urgency: 'alta',
-    contactEmailOrPhone: 'clara.m@proseminario.org',
+    contactEmailOrPhone: 'flavia.fonseca@proseminario.org',
     commentsCount: 6
   },
   {
@@ -225,8 +306,8 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Círculo de oración y pensamiento matutino: Martes y Jueves 07:30 hs',
     content: 'Invitamos a los integrantes del proseminario a conectarse 15 minutos antes de iniciar la jornada laboral para meditar en silencio y sostener en pensamientos a los miembros de la comunidad que atraviesan procesos de salud.',
     category: 'oracion_pensamiento',
-    author: SEED_USERS[1], // Pbro Esteban
-    date: '2026-09-18',
+    author: SEED_USERS[0], // Pbro. Esteban
+    date: '2026-10-08',
     city: 'Virtual (Abierto)',
     urgency: 'normal',
     commentsCount: 12
@@ -236,8 +317,8 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
     title: 'Búsqueda de ejemplares de "El Quinto Evangelio" (Editorial Antroposófica)',
     content: 'Si alguien tiene un ejemplar en papel repetido o disponible en préstamo para la biblioteca circulante del proseminario, por favor avísenme. Tenemos varios interesados en sumarse a la lectura física.',
     category: 'iniciativa',
-    author: SEED_USERS[0], // Ramiro
-    date: '2026-09-15',
+    author: SEED_USERS[3], // Ramiro
+    date: '2026-10-05',
     city: 'Buenos Aires',
     urgency: 'normal',
     contactEmailOrPhone: 'ramiro@proseminario.org',
@@ -245,13 +326,14 @@ export const SEED_BULLETIN_POSTS: BulletinPost[] = [
   },
   {
     id: 'post_4',
-    title: 'Grupo de estudio sobre los Evangelios en relación con la Euritmia',
-    content: 'Estamos conformando una pequeña iniciativa los sábados por la tarde para experimentar gestualmente los versos del Evangelio según San Juan. Quienes deseen sumarse, sean muy bienvenidos.',
+    title: 'Grupo de estudio sobre los Evangelios en relación con el Habla y la Euritmia',
+    content: 'Estamos conformando una pequeña iniciativa los sábados por la tarde para experimentar los versos del Evangelio según San Juan. Quienes deseen sumarse, sean muy bienvenidos.',
     category: 'encuentro',
-    author: SEED_USERS[4], // Matías
-    date: '2026-09-12',
+    author: SEED_USERS[11], // Joana (Responsable)
+    date: '2026-10-02',
     city: 'Rosario / Híbrido',
     urgency: 'normal',
+    contactEmailOrPhone: 'joana@proseminario.org',
     commentsCount: 4
   }
 ];
@@ -263,16 +345,16 @@ export const SEED_QUESTIONS: QuestionPost[] = [
     content: 'Leyendo las primeras conferencias de Rudolf Steiner sobre los evangelios, noto que se hace hincapié en el acontecimiento del Gólgota no como un sacrificio para aplacar la ira divina, sino como una metamorfosis cósmica y vital para la Tierra. ¿Cómo se explica esto en relación con la liturgia de la Comunidad de Cristianos?',
     category: 'cristologia',
     tags: ['Cristología', 'Gólgota', 'Rudolf Steiner', 'Sacramentos'],
-    author: SEED_USERS[0], // Ramiro
-    date: '2026-09-21',
+    author: SEED_USERS[3], // Ramiro
+    date: '2026-10-05',
     resolved: true,
     views: 89,
     answers: [
       {
         id: 'ans_1',
-        author: SEED_USERS[1], // Pbro. Esteban Morales
+        author: SEED_USERS[0], // Pbro. Esteban Morales
         isPriestVerified: true,
-        date: '2026-09-22',
+        date: '2026-10-06',
         upvotes: 14,
         content: `Estimado Ramiro, tocas el corazón mismo de la renovación religiosa. En la teología escolástica tradicional prevaleció la idea de la "expiación vicaria" (Anselmo de Canterbury), donde el ser humano debía una deuda infinita y el Hijo sufre el castigo.
 
@@ -282,9 +364,9 @@ El Gólgota es el punto de inflexión del cosmos: la muerte física es superada 
       },
       {
         id: 'ans_2',
-        author: SEED_USERS[3], // Clara Menéndez
+        author: SEED_USERS[8], // Flávia Fonseca
         isPriestVerified: false,
-        date: '2026-09-22',
+        date: '2026-10-06',
         upvotes: 5,
         content: 'Muchas gracias por la respuesta tan clara padre. Recomiendo complementar esto con la lectura del capítulo 4 del libro de Friedrich Rittelmeyer "El Cristianismo como realidad viviente". Ayuda mucho a visualizarlo.'
       }
@@ -296,18 +378,18 @@ El Gólgota es el punto de inflexión del cosmos: la muerte física es superada 
     content: 'Muchos de los que estamos en el proseminario tenemos ocupaciones laicas demandantes. A veces llego al final del día agotado y me cuesta concentrarme en los versos o en la retrospectiva (Rückschau). ¿Qué consejos prácticos tienen los sacerdotes y compañeros?',
     category: 'vida_interior',
     tags: ['Meditación', 'Ritmo Diario', 'Retrospectiva', 'Práctica Interior'],
-    author: SEED_USERS[3], // Clara
-    date: '2026-09-19',
+    author: SEED_USERS[4], // Claudia
+    date: '2026-10-03',
     resolved: false,
     views: 64,
     answers: [
       {
         id: 'ans_3',
-        author: SEED_USERS[2], // Pbra. Helena
+        author: SEED_USERS[1], // Pbra. Helena
         isPriestVerified: true,
-        date: '2026-09-20',
+        date: '2026-10-04',
         upvotes: 9,
-        content: `Querida Clara: Rudolf Steiner siempre insistió en que vale más 5 o 7 minutos de concentración pura, amorosa y libre de distracción a la mañana temprano, que 40 minutos forzados y exhaustos antes de dormir.
+        content: `Querida Claudia: Rudolf Steiner siempre insistió en que vale más 5 o 7 minutos de concentración pura, amorosa y libre de distracción a la mañana temprano, que 40 minutos forzados y exhaustos antes de dormir.
 
 Consejo práctico:
 1. Por la mañana: elige una sola frase (por ejemplo del Evangelio o un verso meditativo). Dedícale 5 minutos en calma absoluta, antes de mirar el teléfono.
@@ -322,16 +404,16 @@ Consejo práctico:
     content: 'Tengo la duda de si para ingresar posteriormente al Seminario Sacerdotal en Stuttgart o Hamburgo es excluyente dominar el alemán previamente o si se puede cursar con apoyo en español/inglés en las etapas iniciales.',
     category: 'organizacion_proseminario',
     tags: ['Seminario', 'Idiomas', 'Formación', 'Vocación'],
-    author: SEED_USERS[0], // Ramiro
-    date: '2026-09-17',
+    author: SEED_USERS[3], // Ramiro
+    date: '2026-09-28',
     resolved: true,
     views: 52,
     answers: [
       {
         id: 'ans_4',
-        author: SEED_USERS[4], // Matías (Coordinador)
+        author: SEED_USERS[11], // Joana (Responsable)
         isPriestVerified: false,
-        date: '2026-09-17',
+        date: '2026-09-29',
         upvotes: 6,
         content: 'No es requisito excluyente saber alemán para iniciar el Proseminario latinoamericano. De hecho, gran parte del material y los encuentros son en castellano. Para la etapa posterior en Europa, se brindan cursos intensivos de inmersión y existen cohortes con soporte lingüístico. Lo primordial en esta fase es la afinidad del alma con el impulso sacramental.'
       }
@@ -444,8 +526,8 @@ Se sugiere a los integrantes del grupo tomar diariamente el versículo 4: *«En 
     id: 'sum_2',
     title: 'Esquema Comparativo: Las 4 Fases del Acto de Consagración del Hombre',
     theme: 'Liturgia Sacramental Renovada',
-    author: SEED_USERS[3], // Clara Menéndez
-    date: '2026-09-16',
+    author: SEED_USERS[8], // Flávia Fonseca
+    date: '2026-10-09',
     cycleModule: 'Módulo 3: Vida Sacramental',
     relatedBookOrLecture: 'El Acto de Consagración del Hombre - F. Rittelmeyer',
     tags: ['Liturgia', 'Ofertorio', 'Transubstanciación', 'Comunión', 'Evangelio'],
@@ -482,8 +564,8 @@ Se sugiere a los integrantes del grupo tomar diariamente el versículo 4: *«En 
     id: 'sum_3',
     title: 'Apuntes de Clase: La metamorfosis del dolor en el camino del discipulado',
     theme: 'Autoeducación y Formación Interior',
-    author: SEED_USERS[4], // Matías
-    date: '2026-09-10',
+    author: SEED_USERS[13], // Patrícia
+    date: '2026-10-07',
     cycleModule: 'Módulo 1: Fundamentos',
     relatedBookOrLecture: 'Cómo se alcanza el conocimiento de los mundos superiores (GA 10)',
     tags: ['Dolor', 'Autoeducación', 'Resignación activa', 'Mundo Superior'],
@@ -506,8 +588,8 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_1',
     title: 'Círculo Semanal: Estudio del Evangelio de Juan (Capítulo 4: La Samaritana en el Pozo)',
     description: 'Lectura comentada versículo por versículo, intercambio de impresiones y vinculación con el agua viva del espíritu.',
-    host: SEED_USERS[1], // Pbro. Esteban
-    date: '2026-09-25',
+    host: SEED_USERS[0], // Pbro. Esteban
+    date: '2026-10-18',
     time: '19:30',
     durationMinutes: 75,
     modality: 'virtual',
@@ -522,8 +604,8 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_2',
     title: 'Espacio Abierto de Dudas y Conversación Fraternal',
     description: 'Sala libre para conversar entre estudiantes sobre las lecturas de la semana, compartir dudas del seminario y coordinar tareas.',
-    host: SEED_USERS[0], // Ramiro
-    date: '2026-09-27',
+    host: SEED_USERS[3], // Ramiro
+    date: '2026-10-20',
     time: '18:00',
     durationMinutes: 60,
     modality: 'virtual',
@@ -538,8 +620,8 @@ export const SEED_MEETING_ROOMS: MeetingRoom[] = [
     id: 'room_3',
     title: 'Taller de Fonética y Formación del Habla Sacramental',
     description: 'Práctica guiada de respiración, dicción y escucha del sonido de las consonantes y vocales en las oraciones cúlticas.',
-    host: SEED_USERS[2], // Pbra. Helena
-    date: '2026-10-02',
+    host: SEED_USERS[1], // Pbra. Helena
+    date: '2026-10-24',
     time: '17:00',
     durationMinutes: 90,
     modality: 'hibrido',
@@ -609,72 +691,140 @@ export const PROSEMINAR_MODULES: ProseminarModuleInfo[] = [
 
 export const SEED_ATTENDANCE_SESSIONS: AttendanceSession[] = [
   {
-    id: 'att_1',
-    date: '2026-09-20',
-    title: 'Apertura: Fundamentos de la Cristología y el Nuevo Impulso Sacramental',
+    id: 'att_6_oct',
+    date: '2026-10-06',
+    title: '3a Martes (6-oct) - Seguimiento de Participantes',
     type: 'clase',
     records: [
+      { userId: 'user_claudia', status: 'presente' },
+      { userId: 'user_daniel', status: 'presente' },
+      { userId: 'user_emilio', status: 'presente' },
+      { userId: 'user_fernando', status: 'ausente', note: 'No asistió' },
+      { userId: 'user_flavia', status: 'presente' },
+      { userId: 'user_gabriela', status: 'presente' },
+      { userId: 'user_gustavo', status: 'ausente', note: 'No asistió' },
+      { userId: 'user_joana', status: 'presente' },
+      { userId: 'user_karina', status: 'presente' },
+      { userId: 'user_lara', status: 'presente' },
+      { userId: 'user_lore', status: 'presente' },
+      { userId: 'user_merlin', status: 'presente' },
+      { userId: 'user_patricia', status: 'presente' },
       { userId: 'user_ramiro', status: 'presente' },
-      { userId: 'user_clara', status: 'presente' },
-      { userId: 'user_matias', status: 'presente' },
-      { userId: 'user_sofia', status: 'presente' },
-      { userId: 'user_tomas', status: 'presente' },
-      { userId: 'user_lucia', status: 'presente' },
-      { userId: 'user_ignacio', status: 'presente' },
-      { userId: 'user_priest_esteban', status: 'presente' },
-      { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'justificado', note: 'Servicio sacramental' }
-    ]
-  },
-  {
-    id: 'att_2',
-    date: '2026-09-27',
-    title: 'Estudio de los Cuatro Evangelios y el Prólogo de San Juan',
-    type: 'circulo',
-    records: [
-      { userId: 'user_ramiro', status: 'presente' },
-      { userId: 'user_clara', status: 'presente' },
-      { userId: 'user_matias', status: 'presente' },
-      { userId: 'user_sofia', status: 'justificado', note: 'Compromiso laboral' },
-      { userId: 'user_tomas', status: 'presente' },
-      { userId: 'user_lucia', status: 'ausente' },
-      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_roberta', status: 'presente' },
+      { userId: 'user_sebastian', status: 'presente' },
+      { userId: 'user_valentin', status: 'presente' },
       { userId: 'user_priest_esteban', status: 'presente' },
       { userId: 'user_priest_helena', status: 'presente' },
       { userId: 'user_priest_martin', status: 'presente' }
     ]
   },
   {
-    id: 'att_3',
-    date: '2026-10-04',
-    title: 'Práctica Cúltica y Estudio del Acto de Consagración del Hombre',
-    type: 'taller',
+    id: 'att_8_oct',
+    date: '2026-10-08',
+    title: '5a Jueves (8-oct) - Seguimiento de Participantes',
+    type: 'clase',
     records: [
+      { userId: 'user_claudia', status: 'presente' },
+      { userId: 'user_daniel', status: 'presente' },
+      { userId: 'user_emilio', status: 'presente' },
+      { userId: 'user_fernando', status: 'presente' },
+      { userId: 'user_flavia', status: 'presente' },
+      { userId: 'user_gabriela', status: 'presente' },
+      { userId: 'user_gustavo', status: 'presente' },
+      { userId: 'user_joana', status: 'presente' },
+      { userId: 'user_karina', status: 'presente' },
+      { userId: 'user_lara', status: 'presente' },
+      { userId: 'user_lore', status: 'presente' },
+      { userId: 'user_merlin', status: 'ausente', note: 'No asistió' },
+      { userId: 'user_patricia', status: 'presente' },
       { userId: 'user_ramiro', status: 'presente' },
-      { userId: 'user_clara', status: 'presente' },
-      { userId: 'user_matias', status: 'presente' },
-      { userId: 'user_sofia', status: 'presente' },
-      { userId: 'user_tomas', status: 'justificado', note: 'Viaje desde Córdoba' },
-      { userId: 'user_lucia', status: 'presente' },
-      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_roberta', status: 'ausente', note: 'No asistió' },
+      { userId: 'user_sebastian', status: 'presente' },
+      { userId: 'user_valentin', status: 'ausente', note: 'No asistió' },
       { userId: 'user_priest_esteban', status: 'presente' },
       { userId: 'user_priest_helena', status: 'presente' },
-      { userId: 'user_priest_martin', status: 'justificado' }
+      { userId: 'user_priest_martin', status: 'presente' }
     ]
   },
   {
-    id: 'att_4',
-    date: '2026-10-07',
-    title: 'Encuentro Preparatorio: Convivencia y Logística en Granja Épicos',
-    type: 'encuentro',
+    id: 'att_15_oct',
+    date: '2026-10-15',
+    title: '5a Jueves (15-oct) - Seguimiento de Participantes',
+    type: 'clase',
     records: [
+      { userId: 'user_claudia', status: 'presente' },
+      { userId: 'user_daniel', status: 'presente' },
+      { userId: 'user_emilio', status: 'presente' },
+      { userId: 'user_fernando', status: 'presente' },
+      { userId: 'user_flavia', status: 'presente' },
+      { userId: 'user_gabriela', status: 'presente' },
+      { userId: 'user_gustavo', status: 'presente' },
+      { userId: 'user_joana', status: 'presente' },
+      { userId: 'user_karina', status: 'presente' },
+      { userId: 'user_lara', status: 'presente' },
+      { userId: 'user_lore', status: 'presente' },
+      { userId: 'user_merlin', status: 'presente' },
+      { userId: 'user_patricia', status: 'presente' },
       { userId: 'user_ramiro', status: 'presente' },
-      { userId: 'user_clara', status: 'presente' },
-      { userId: 'user_matias', status: 'presente' },
-      { userId: 'user_sofia', status: 'presente' },
-      { userId: 'user_tomas', status: 'presente' },
-      { userId: 'user_lucia', status: 'presente' },
-      { userId: 'user_ignacio', status: 'presente' },
+      { userId: 'user_roberta', status: 'presente' },
+      { userId: 'user_sebastian', status: 'presente' },
+      { userId: 'user_valentin', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'presente' }
+    ]
+  },
+  {
+    id: 'att_22_oct',
+    date: '2026-10-22',
+    title: '5a Jueves (22-oct) - Seguimiento de Participantes',
+    type: 'clase',
+    records: [
+      { userId: 'user_claudia', status: 'presente' },
+      { userId: 'user_daniel', status: 'presente' },
+      { userId: 'user_emilio', status: 'presente' },
+      { userId: 'user_fernando', status: 'presente' },
+      { userId: 'user_flavia', status: 'presente' },
+      { userId: 'user_gabriela', status: 'presente' },
+      { userId: 'user_gustavo', status: 'presente' },
+      { userId: 'user_joana', status: 'presente' },
+      { userId: 'user_karina', status: 'presente' },
+      { userId: 'user_lara', status: 'presente' },
+      { userId: 'user_lore', status: 'presente' },
+      { userId: 'user_merlin', status: 'presente' },
+      { userId: 'user_patricia', status: 'presente' },
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_roberta', status: 'presente' },
+      { userId: 'user_sebastian', status: 'presente' },
+      { userId: 'user_valentin', status: 'presente' },
+      { userId: 'user_priest_esteban', status: 'presente' },
+      { userId: 'user_priest_helena', status: 'presente' },
+      { userId: 'user_priest_martin', status: 'presente' }
+    ]
+  },
+  {
+    id: 'att_29_oct',
+    date: '2026-10-29',
+    title: '5a Jueves (29-oct) - Seguimiento de Participantes',
+    type: 'clase',
+    records: [
+      { userId: 'user_claudia', status: 'presente' },
+      { userId: 'user_daniel', status: 'presente' },
+      { userId: 'user_emilio', status: 'presente' },
+      { userId: 'user_fernando', status: 'presente' },
+      { userId: 'user_flavia', status: 'presente' },
+      { userId: 'user_gabriela', status: 'presente' },
+      { userId: 'user_gustavo', status: 'presente' },
+      { userId: 'user_joana', status: 'presente' },
+      { userId: 'user_karina', status: 'presente' },
+      { userId: 'user_lara', status: 'presente' },
+      { userId: 'user_lore', status: 'presente' },
+      { userId: 'user_merlin', status: 'presente' },
+      { userId: 'user_patricia', status: 'presente' },
+      { userId: 'user_ramiro', status: 'presente' },
+      { userId: 'user_roberta', status: 'presente' },
+      { userId: 'user_sebastian', status: 'presente' },
+      { userId: 'user_valentin', status: 'presente' },
       { userId: 'user_priest_esteban', status: 'presente' },
       { userId: 'user_priest_helena', status: 'presente' },
       { userId: 'user_priest_martin', status: 'presente' }

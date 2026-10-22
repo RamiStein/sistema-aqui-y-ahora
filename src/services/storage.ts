@@ -30,17 +30,17 @@ import {
 
 const KEYS = {
   ARTICLES: 'proseminario_articles_v1',
-  POSTS: 'proseminario_bulletin_v1',
-  QUESTIONS: 'proseminario_questions_v1',
+  POSTS: 'proseminario_bulletin_v2',
+  QUESTIONS: 'proseminario_questions_v2',
   BOOKS: 'proseminario_books_v1',
-  SUMMARIES: 'proseminario_summaries_v1',
-  MEETINGS: 'proseminario_meetings_v1',
-  ACTIVE_USER: 'proseminario_active_user_v1',
-  ATTENDANCE: 'proseminario_attendance_v1',
+  SUMMARIES: 'proseminario_summaries_v2',
+  MEETINGS: 'proseminario_meetings_v2',
+  ACTIVE_USER: 'proseminario_active_user_v2',
+  ATTENDANCE: 'proseminario_attendance_v2',
   FUNDRAISER: 'proseminario_fundraiser_v1',
   TRIP: 'proseminario_trip_v1',
   CLASSES: 'proseminario_classes_v1',
-  USERS: 'proseminario_users_v1',
+  USERS: 'proseminario_users_v2',
 };
 
 function getFromStorage<T>(key: string, defaultValue: T): T {
